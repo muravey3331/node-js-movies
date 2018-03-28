@@ -15,7 +15,7 @@ app.get('/movies', (req, res) => {
 app.post('/movies', (req, res) => {
     db.createMovie(req.body).then(date => res.send(data));
 });
-app.delete('/movies/:id', (req, res) => {
+app.delete('/movie/:id', (req, res) => {
     db.deleteMovie(req.params.id).then(date => res.send(data));
 });
 
