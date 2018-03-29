@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import api from '../api';
 
-const Form = ({ onAddMovie }) => {
+import AddActors from './AddActors';
+
+const CreateMovie = ({ onAddMovie }) => {
     let movie = {
         title: "",
         text: "",
@@ -51,6 +53,7 @@ const Form = ({ onAddMovie }) => {
                 <div>
                     <button onClick={addMovie}>add movie</button>
                 </div>
+                <AddActors />
             </form>
         </div>
     )
@@ -70,4 +73,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateMovie)

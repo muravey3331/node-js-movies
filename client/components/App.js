@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import MoviesList from "./MoviesList";
 import Filter from "./Filter";
-import Form from "./Form";
+import CreateMovie from "./CreateMovie";
 import api from '../api';
 
 
@@ -21,7 +21,7 @@ class App extends Component {
 
     render(){
         return (<div>
-            <Form />
+            <CreateMovie />
             <Filter/>
             <MoviesList />
         </div>)
@@ -34,6 +34,7 @@ function mapStateToProps(state) {
 
     }
 }
+
 
 function mapDispatchToProps(dispatch) {
     return {

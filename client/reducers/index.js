@@ -1,9 +1,11 @@
 import {combineReducers} from 'redux';
 import movies from './movies';
+import createMovie from './create-movie'
 // import api from '../api';
 
 export default combineReducers(
     {
-       movies
+       movies,
+        createMovie
     }
 );

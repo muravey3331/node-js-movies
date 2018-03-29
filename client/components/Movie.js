@@ -4,7 +4,6 @@ import api from '../api';
 
 const Movie = ({ onDeleteMovie, title, id, text, img}) => {
 
-
     const deleteMovie = () => {
         api.deleteMovie(id)
             .then(onDeleteMovie(id));
@@ -12,11 +11,12 @@ const Movie = ({ onDeleteMovie, title, id, text, img}) => {
 
     return (
         <div>
+            <img src={img} alt="" width="200"/>
             <h1>{title}</h1>
             <p>{text}</p>
             <p>{id}</p>
-            <img src={img} alt="" width="200"/>
             <button onClick={deleteMovie}>delete</button>
+            <hr/>
         </div>
     )
 
