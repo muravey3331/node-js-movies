@@ -1,16 +1,20 @@
+import React, { Component } from 'react';
 import axios from 'axios';
 
-import { apiPrefix } from '../../etc/config.json';
+export default {
+    getMovies() {
+       return axios.get(`http://localhost:3000/movies`)
+    },
 
-export default  {
-    listMovies() {
-        return axios.get(`${apiPrefix}/movies`);
+    addMovie(data) {
+        const movie = {
+            title: data.title,
+            text: data.text,
+            img: data.img
+        };
+        return axios.post(`http://localhost:3000/movies`, movie)
     },
-    createMovie() {
-        return axios.post(`${apiPrefix}/movies`, data);
-    },
-    deleteMovie(movieId) {
-        return axios.delete(`${apiPrefix}/movie/${movieId}`);
+    deleteMovie(id) {
+        return axios.delete(`http://localhost:3000/movie/${id}`)
     }
 }
-

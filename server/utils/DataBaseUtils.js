@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import '../models/Movie';
-import config from '../../ets/config.json'
+import config from '../../etc/config.json'
 
 const Movie = mongoose.model('Movie');
 
