@@ -16,7 +16,7 @@ const Movie = ({ onDeleteMovie, title, id, text, img ,actors}) => {
             <p>{text}</p>
             <h4>Actors:</h4>
             { <ul className="actors-list">
-                {actors.map((actor, index) => (<li key={index} className="actor-item">{actor.name}</li>))}
+                {actors.map((name, index) => (<li key={index} className="actor-item">{name}</li>))}
             </ul>}
             <button onClick={deleteMovie}>delete</button>
         </div>

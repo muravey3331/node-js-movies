@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import Movie from "./Movie";
 
 const MoviesList = ({moviesList}) => {
-
     return (
         <div>
             <ul className="movie-list">
