@@ -1,32 +1,29 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import api from '../api';
+//components
 import MoviesList from "./MoviesList";
 import Filter from "./Filter";
 import CreateMovie from "./CreateMovie";
-import api from '../api';
-
-
 
 
 class App extends Component {
     constructor(props){
         super(props);
-
     }
 
     componentDidMount() {
         api.getMovies().then(data => this.props.onGetMovies(data.data));
-
     }
+
 
     render(){
         return (<div>
-            <CreateMovie />
             <Filter/>
+            <CreateMovie />
             <MoviesList />
         </div>)
     }
-
 }
 
 function mapStateToProps(state) {
@@ -34,7 +31,6 @@ function mapStateToProps(state) {
 
     }
 }
-
 
 function mapDispatchToProps(dispatch) {
     return {

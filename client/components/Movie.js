@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import api from '../api';
 
-const Movie = ({ onDeleteMovie, title, id, text, img}) => {
+const Movie = ({ onDeleteMovie, title, id, text, img ,actors}) => {
 
     const deleteMovie = () => {
         api.deleteMovie(id)
@@ -11,16 +11,19 @@ const Movie = ({ onDeleteMovie, title, id, text, img}) => {
 
     return (
         <div>
-            <img src={img} alt="" width="200"/>
+            <img src={img} alt="" className="movie-img" />
             <h1>{title}</h1>
             <p>{text}</p>
-            <p>{id}</p>
+            <h4>Actors:</h4>
+            { <ul className="actors-list">
+                {actors.map((actor, index) => (<li key={index} className="actor-item">{actor.name}</li>))}
+            </ul>}
             <button onClick={deleteMovie}>delete</button>
-            <hr/>
         </div>
     )
-
 };
+
+
 
 function mapStateToProps(state) {
     return {

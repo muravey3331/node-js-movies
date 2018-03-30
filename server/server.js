@@ -25,6 +25,10 @@ app.delete('/movie/:id', (req, res) => {
     db.deleteMovie(req.params.id).then(data => res.send(data));
 });
 
+app.post('/movies/filter', (req, res) => {
+    db.filterMovie(req.body).then(data => res.send(data))
+});
+
 const server = app.listen(3000, (err) =>{
     if (err) console.log(err);
     console.log(`server is running on port ${serverPort}`);

@@ -12,15 +12,12 @@
     "express": "*",
     "flux": "^2.1.1",
     "jquery": "*",
-    "keymirror": "^0.1.1",
     "less": "^2.6.0",
     "mongoose": "*",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
-    "react-masonry-component": "^4.0.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
-    "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
@@ -35,7 +32,8 @@
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.12",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "redux-devtools-extension": "^2.13.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

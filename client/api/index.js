@@ -10,11 +10,17 @@ export default {
         const movie = {
             title: data.title,
             text: data.text,
-            img: data.img
+            img: data.img,
+            actors: data.actors
         };
         return axios.post(`http://localhost:3000/movies`, movie)
     },
     deleteMovie(id) {
         return axios.delete(`http://localhost:3000/movie/${id}`)
+    },
+
+    filterMovie (data) {
+        return axios.post(`http://localhost:3000/movies/filter`, data)
     }
 }
+

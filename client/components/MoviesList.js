@@ -6,14 +6,16 @@ const MoviesList = ({moviesList}) => {
 
     return (
         <div>
-            <ul>
+            <ul className="movie-list">
                 { moviesList.map((movie, index) => {
                     return (
-                        <li key={index}>
+                        <li key={index}
+                            className="movie-card">
                             <Movie title={movie.title}
                                    id={movie._id}
                                    text={movie.text}
                                    img={movie.img}
+                                   actors={movie.actors}
                                  />
                         </li>
                     );
@@ -23,7 +25,6 @@ const MoviesList = ({moviesList}) => {
         </div>
     )
 };
-
 
 
 

@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+
+.wrapper{
+    margin: 0 auto;
+    padding: 40px;
+    width: 100%;
+    max-width: 1440px;
+}
+.add-movie-form{
+    max-width: 400px;
+}
+.input{
+    margin: 5px 0;
+    display: block;
+    padding-left: 20px;
+    height: 40px;
+    width: 100%;
+    border: 1px solid royalblue;
+}
+.input-area{
+    margin: 5px 0;
+    display: block;
+    padding: 20px;
+    height: 120px;
+    width: 100%;
+    border: 1px solid royalblue;
+    resize: none;
+}
+.button{
+    margin: 5px 0;
+    padding: 0 40px;
+    height: 40px;
+    text-align: center;
+    background: royalblue;
+    color: white;
+    border: none;
+}
+.movie-list {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.movie-card{
+    margin: 1%;
+    width: 23%;
+    min-width: 280px;
+    padding: 15px;
+    background: #eee;
+}
+.movie-img{
+    width: 100%;
+}
+
+.actors-create-list {
+    margin: 5px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.actors-create-item{
+    margin: 2px;
+    padding: 10px;
+    border-radius: 2px;
+    background: #ddd;
+    font-size: 12px;
+}
