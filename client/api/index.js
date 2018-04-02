@@ -25,9 +25,8 @@ export default {
         return axios.post(`${apiPrefix}/movies/filter`, data)
     },
     loadFile(file){
-        const formData = new FormData(file);
-        formData.append(`file`, file);
-        return axios.post( `${apiPrefix}/load_file`, formData )
+        console.log('file', file);
+        return axios.post( `${apiPrefix}/movies/load_file`, file )
     }
 }
 

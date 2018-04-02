@@ -55,3 +55,18 @@ export function filterMovie(data) {
 
     return filteredMovies;
 }
+
+export function loadFile(file) {
+
+    console.log(file);
+    // const movies = file.split(/\r\n\n|\n\n/ );
+    //     // Reading line by line
+    //     movies.map((movie) => {
+    //         console.log(movie);
+    //     });
+
+
+
+
+
+}

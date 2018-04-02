@@ -25,7 +25,11 @@ app.delete('/movie/:id', (req, res) => {
 });
 
 app.post('/movies/filter', (req, res) => {
-    db.filterMovie(req.body).then(data => res.send(data))
+    db.filterMovie(req.body).then(data => res.send(data));
+});
+app.post('/movies/load_file', (req, res) => {
+    console.log(req.body);
+    db.loadFile(req.body);
 });
 
 const server = app.listen(3000, (err) =>{

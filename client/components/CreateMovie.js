@@ -36,9 +36,20 @@ const CreateMovie = ({onAddMovie, onClearActorsList, actors}) => {
             });
     };
     const handleLoadFile = (e) => {
+        if ( ! (window.File && window.FileReader && window.FileList && window.Blob)) {
+            alert('The File APIs are not fully supported in this browser.');
+        }
         const file = e.target.files[0];
-        api.loadFile(file);
+        const reader = new FileReader();
+        let fileStr;
+        reader.onload = (e) => {
+            fileStr = e.target.result;
+            console.log(fileStr);
+            api.loadFile(fileStr);
+        };
+        reader.readAsText(file);
     };
+
 
 
     return (
