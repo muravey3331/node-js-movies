@@ -1,5 +1,8 @@
 const initialState = {
-    key: ''
+    filterValue: "",
+    filterBy: "title"
+
+
 
 };
 
@@ -8,7 +11,12 @@ export default function filter(state = initialState, action) {
         case 'CHANGE_FILTER_VALUE':
             return {
                 ...state,
-                key: action.value
+                filterValue: action.value
+            };
+        case 'CHANGE_FILTER_BY' :
+            return {
+                ...state,
+                filterBy:action.filterBy
             };
 
         default:

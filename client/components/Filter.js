@@ -3,25 +3,26 @@ import {connect} from 'react-redux';
 import api from '../api';
 
 
-const Filter = ({ onGetFilterMovies, onFilterChange, filterValue}) => {
+const Filter = ({ onGetFilterMovies, onFilterChange, filterBy}) => {
     let filterParams = {
-        key: "",
-        filterBy: "title"
+        filterValue: "",
+        filterBy: filterBy
     };
 
-    const handleFilterChange = (e) => {
+    const handleChangeFilterValue = (e) => {
+        filterParams.filterValue = e.target.value;
         onFilterChange(e.target.value);
-        filterParams.key = e.target.value;
-
-        api.filterMovie(filterParams)
-            .then(data => {
-                return onGetFilterMovies(data.data)})
+        getFilteredMovies();
     };
 
-    const handleFilterSelect = (e) => {
+
+    const handleChangeFilterBy = (e) => {
         console.log(e.target.value);
         filterParams.filterBy = e.target.value;
+        getFilteredMovies();
+    };
 
+    const getFilteredMovies = () => {
         api.filterMovie(filterParams)
             .then(data => {
                 return onGetFilterMovies(data.data)})
@@ -33,9 +34,9 @@ const Filter = ({ onGetFilterMovies, onFilterChange, filterValue}) => {
             <input type="text"
                    className="input"
                    placeholder="what do you want to find"
-                   onChange={handleFilterChange}/>
+                   onChange={handleChangeFilterValue}/>
             filter by:
-            <select name="" id="" onChange={handleFilterSelect}>
+            <select name="" id="" onChange={handleChangeFilterBy}>
                 <option value="title">movie name</option>
                 <option value="actor">actors</option>
             </select>
@@ -48,7 +49,7 @@ const Filter = ({ onGetFilterMovies, onFilterChange, filterValue}) => {
 
 const mapStateToProps = (state) => {
     return {
-    filterValue: state.filter.key
+    filterValue: state.filter
     }
 };
 
