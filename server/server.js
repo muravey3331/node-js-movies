@@ -9,7 +9,6 @@ db.setUpConnection();
 const app = express();
 
 app.use( bodyParser.json());
-
 // Allow requests from any origin
 app.use(cors({ origin: '*' }));
 

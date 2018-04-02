@@ -1,9 +1,7 @@
 const initialState = {
     filterValue: "",
-    filterBy: "title"
-
-
-
+    filterBy: "title",
+    sortBy: ""
 };
 
 export default function filter(state = initialState, action) {
@@ -16,13 +14,19 @@ export default function filter(state = initialState, action) {
         case 'CHANGE_FILTER_BY' :
             return {
                 ...state,
-                filterBy:action.filterBy
+                filterBy:action.params.filterBy
+            };
+        case 'CHANGE_SORT_BY':
+            return {
+                ...state,
+            sortBy: action.params.sortBy
             };
 
         default:
             return state
     }
 }
+
 
 
 

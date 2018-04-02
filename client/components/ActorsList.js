@@ -23,10 +23,10 @@ const ActorsList = ({ actors, onAddActor}) => {
                 onClick={handleAddActor}
                 className="button">add</button>
             <ul className="actors-create-list">
-                {actors.map((actor, index) => (
+                {actors.map((name, index) => (
                     <li key={index}
-                    className="actors-create-item">
-                        <Actor name={actor.name} id={actor.id}/>
+                        className="actors-create-item">
+                        <Actor name={name} id={index}/>
                     </li>
                 ))}
             </ul>
@@ -41,15 +41,10 @@ function mapStateToProps(state) {
         actors: state.createMovie.actors
     }
 }
-
 function mapDispatchToProps(dispatch) {
     return {
         onAddActor: (name) => {
-            let actor = {
-                id: Date.now(),
-                name
-            };
-            dispatch({type: "ADD_ACTOR", actor})
+            dispatch({type: "ADD_ACTOR", name})
         }
     }
 }

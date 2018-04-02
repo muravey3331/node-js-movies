@@ -3,10 +3,11 @@ import {connect} from 'react-redux';
 import api from '../api';
 
 
-const Filter = ({ onGetFilterMovies, onFilterChange, filterBy}) => {
+const Filter = ({ onGetFilterMovies, onFilterChange, onChangeFilterBy, onChangSortBy, filter}) => {
     let filterParams = {
-        filterValue: "",
-        filterBy: filterBy
+        filterValue: filter.filterValue,
+        filterBy: filter.filterBy,
+        sortBy: filter.sortBy
     };
 
     const handleChangeFilterValue = (e) => {
@@ -15,19 +16,24 @@ const Filter = ({ onGetFilterMovies, onFilterChange, filterBy}) => {
         getFilteredMovies();
     };
 
-
     const handleChangeFilterBy = (e) => {
-        console.log(e.target.value);
         filterParams.filterBy = e.target.value;
+        onChangeFilterBy(filterParams);
         getFilteredMovies();
     };
+
+    const handleChangeSortBy = (e) => {
+        filterParams.sortBy = e.target.value;
+        onChangSortBy(filterParams);
+        getFilteredMovies();
+    };
+
 
     const getFilteredMovies = () => {
         api.filterMovie(filterParams)
             .then(data => {
                 return onGetFilterMovies(data.data)})
     };
-
 
     return (
         <div>
@@ -40,6 +46,14 @@ const Filter = ({ onGetFilterMovies, onFilterChange, filterBy}) => {
                 <option value="title">movie name</option>
                 <option value="actor">actors</option>
             </select>
+            sort by:
+            <select name="" id="" onChange={handleChangeSortBy}>
+                <option value="">off</option>
+                <option value="a>z">A -> Z</option>
+                <option value="z>a">Z -> A</option>
+                <option value="rate-up">rate up</option>
+                <option value="rate-down">rate down</option>
+            </select>
         </div>
     )
 };
@@ -49,7 +63,7 @@ const Filter = ({ onGetFilterMovies, onFilterChange, filterBy}) => {
 
 const mapStateToProps = (state) => {
     return {
-    filterValue: state.filter
+    filter: state.filter
     }
 };
 
@@ -58,6 +72,12 @@ const mapDispatchToProps = (dispatch) => {
         onFilterChange: (value) =>{
             dispatch({type: 'CHANGE_FILTER_VALUE', value });
 
+        },
+        onChangeFilterBy: (params) => {
+            dispatch({type: 'CHANGE_FILTER_BY', params})
+        },
+        onChangSortBy: (params) => {
+          dispatch({type: 'CHANGE_SORT_BY', params})
         },
         onGetFilterMovies: (data) => {
             dispatch({type: "GET_MOVIES_LIST", data})

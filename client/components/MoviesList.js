@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import Movie from "./Movie";
 
 const MoviesList = ({moviesList}) => {
-
     return (
         <div>
             <ul className="movie-list">
@@ -16,10 +15,11 @@ const MoviesList = ({moviesList}) => {
                                    text={movie.text}
                                    img={movie.img}
                                    actors={movie.actors}
-                                 />
+                                   rate={movie.rate}
+                            />
                         </li>
                     );
-                    })
+                })
                 }
             </ul>
         </div>

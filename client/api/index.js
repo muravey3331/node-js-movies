@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { apiPrefix } from '/etc/config.json';
 
 export default {
     getMovies() {
-       return axios.get(`http://localhost:3000/movies`)
+       return axios.get(`${apiPrefix}/movies`)
     },
 
     addMovie(data) {
@@ -11,16 +12,21 @@ export default {
             title: data.title,
             text: data.text,
             img: data.img,
+            rate: data.rate,
             actors: data.actors
         };
-        return axios.post(`http://localhost:3000/movies`, movie)
+        return axios.post(`${apiPrefix}/movies`, movie)
     },
     deleteMovie(id) {
-        return axios.delete(`http://localhost:3000/movie/${id}`)
+        return axios.delete(`${apiPrefix}/movie/${id}`)
     },
 
     filterMovie (data) {
-        return axios.post(`http://localhost:3000/movies/filter`, data)
+        return axios.post(`${apiPrefix}/movies/filter`, data)
+    },
+    loadFile(file){
+        const formData = new FormData(file);
+        formData.append(`${apiPrefix}/load_file`, file);
     }
 }
 

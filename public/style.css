@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     outline: 0;
-    font-family: sans-serif;
     box-sizing: border-box;
+    font-family: Roboto, sans-serif;
 }
 li{
     list-style: none;
@@ -44,6 +44,15 @@ li{
     color: white;
     border: none;
 }
+.button:hover{
+    background: #415fc3;
+}
+.button--error{
+    background: tomato;
+}
+.button--error:hover{
+    background: #e16347;
+}
 .movie-list {
     width: 100%;
     display: flex;
@@ -59,6 +68,8 @@ li{
 }
 .movie-img{
     width: 100%;
+    height: 200px;
+    background-size: cover;
 }
 
 .actors-create-list {
@@ -73,4 +84,8 @@ li{
     border-radius: 2px;
     background: #ddd;
     font-size: 12px;
+}
+.actor-item{
+    display: inline-block;
+    margin-left: 10px;
 }

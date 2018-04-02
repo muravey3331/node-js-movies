@@ -6,6 +6,7 @@ const MovieSchema = new Schema({
     title:  {type: String},
     text:   {type: String, require: true},
     img:    {type: String},
+    rate:   {type: Number},
     actors: {type: Array}
 });
 

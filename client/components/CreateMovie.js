@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import api from '../api';
 //components
@@ -10,25 +10,34 @@ const CreateMovie = ({onAddMovie, onClearActorsList, actors}) => {
         title: "",
         text: "",
         img: "",
+        rate: "",
         actors
     };
 
     const addMovie = (e) => {
         e.preventDefault();
+
         let data = {
             title: movie.title.value,
             text: movie.text.value,
             img: movie.img.value,
+            rate: +movie.rate.value,
             actors
         };
+
         api.addMovie(data)
             .then(data => onAddMovie(data.data))
             .then(() => {
                 movie.title.value = "";
                 movie.text.value = "";
                 movie.img.value = "";
+                movie.rate.value = "";
                 onClearActorsList();
             });
+    };
+    const handleLoadFile = (e) => {
+        const file = e.target.files[0];
+        api.loadFile(file);
     };
 
 
@@ -67,12 +76,25 @@ const CreateMovie = ({onAddMovie, onClearActorsList, actors}) => {
                                movie.img = input;
                            }}/>
                 </div>
+                <div>
+                    <input name="rate"
+                           type="text"
+                           placeholder="rate"
+                           className="input"
+                           ref={(input) => {
+                               movie.rate = input;
+                           }}/>
+                </div>
                 <ActorsList/>
                 <div>
                     <button onClick={addMovie}
                             className="button">add movie
                     </button>
                 </div>
+            </form>
+            <h2>or download your file</h2>
+            <form action="">
+                <input type="file" onChange={handleLoadFile}/>
             </form>
         </div>
     )

@@ -4,39 +4,54 @@ import config from '../../etc/config.json'
 
 const Movie = mongoose.model('Movie');
 
-export function setUpConnection () {
+export function setUpConnection() {
     mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
 }
 
-export function moviesList () {
+export function moviesList() {
     return Movie.find()
 }
 
-export function createMovie (data){
+export function createMovie(data) {
     const movie = new Movie({
         title: data.title,
         text: data.text,
         img: data.img,
+        rate: data.rate,
         actors: data.actors
     });
     return movie.save();
 }
 
-export function deleteMovie (id) {
+export function deleteMovie(id) {
     return Movie.findById(id).remove();
 }
 
-export function filterMovie (data) {
+export function filterMovie(data) {
     console.log('filter data:', data);
-    if(data.filterBy === 'title'){
-        return Movie.find({ "title": { "$regex": data.key, "$options": "i" } });
-    }else if(data.filterBy === 'actor'){
-        return Movie.find()
-            .filter(movie => {
-                movie.actors
-                    .forEach(actor => ( actor.name.includes(data.key) ))
-            });
+    let filteredMovies = Movie;
+    switch (data.filterBy) {
+        case 'title':
+            filteredMovies = filteredMovies.find({"title": {"$regex": data.filterValue, "$options": "i"}});
+            break;
+        case 'actor':
+            filteredMovies = filteredMovies.find({"actors": {"$regex": data.filterValue, "$options": "i"}});
+            break;
+    }
+    switch (data.sortBy) {
+        case 'a>z':
+            filteredMovies = filteredMovies.sort({ title: 'asc', test: -1 });
+            break;
+        case 'z>a':
+            filteredMovies = filteredMovies.sort({ title: 'desc', test: -1 });
+            break;
+        case 'rate-up':
+            filteredMovies = filteredMovies.sort({ rate: 'asc', test: -1 });
+            break;
+        case 'rate-down':
+            filteredMovies = filteredMovies.sort({ rate: 'desc', test: -1 });
+            break;
     }
 
-
+    return filteredMovies;
 }
