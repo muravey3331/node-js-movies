@@ -35,7 +35,6 @@ const ActorsList = ({ actors, onAddActor}) => {
 };
 
 
-
 function mapStateToProps(state) {
     return {
         actors: state.createMovie.actors

@@ -29,6 +29,7 @@ const Movie = ({ onDeleteMovie, title, id, text, img ,actors, rate }) => {
 };
 
 
+
 function mapStateToProps(state) {
     return {
         movie: state

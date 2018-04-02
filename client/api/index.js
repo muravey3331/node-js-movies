@@ -25,8 +25,8 @@ export default {
         return axios.post(`${apiPrefix}/movies/filter`, data)
     },
     loadFile(file){
-        console.log('file', file);
         return axios.post( `${apiPrefix}/movies/load_file`, file )
     }
 }
+
 

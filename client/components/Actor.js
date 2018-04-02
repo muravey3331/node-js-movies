@@ -23,7 +23,6 @@ function mapStateToProps(state) {
     }
 }
 
-
 function mapDispatchToProps(dispatch) {
     return {
         onDeleteActor: (id) => {

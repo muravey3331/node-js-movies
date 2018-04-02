@@ -28,7 +28,6 @@ export function deleteMovie(id) {
 }
 
 export function filterMovie(data) {
-    console.log('filter data:', data);
     let filteredMovies = Movie;
     switch (data.filterBy) {
         case 'title':
@@ -56,14 +55,17 @@ export function filterMovie(data) {
     return filteredMovies;
 }
 
-export function loadFile(file) {
+export function loadFile(fileObj) {
 
-    console.log(file);
-    // const movies = file.split(/\r\n\n|\n\n/ );
-    //     // Reading line by line
-    //     movies.map((movie) => {
-    //         console.log(movie);
-    //     });
+    console.log(fileObj.file);
+    let movies = fileObj.file.split(/\r\n\n|\n\n/ );
+
+        // Reading line by line
+    movies = movies.map((movie) => {
+            // console.log(movie + '\n=================================');
+            let movieObjItem = movie.split(/\r\n|\n/ );
+        console.log(movieObjItem + '\n-----');
+    });
 
 
 

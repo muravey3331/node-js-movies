@@ -28,7 +28,7 @@ app.post('/movies/filter', (req, res) => {
     db.filterMovie(req.body).then(data => res.send(data));
 });
 app.post('/movies/load_file', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     db.loadFile(req.body);
 });
 
