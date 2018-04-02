@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { apiPrefix } from '/etc/config.json';
+import { apiPrefix } from '../../etc/config.json';
 
 export default {
     getMovies() {
