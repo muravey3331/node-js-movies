@@ -26,7 +26,8 @@ export default {
     },
     loadFile(file){
         const formData = new FormData(file);
-        formData.append(`${apiPrefix}/load_file`, file);
+        formData.append(`file`, file);
+        return axios.post( `${apiPrefix}/load_file`, formData )
     }
 }
 
