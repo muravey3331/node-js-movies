@@ -8,6 +8,9 @@
 li{
     list-style: none;
 }
+body{
+    background: #130b31;
+}
 
 .wrapper{
     margin: 0 auto;
@@ -53,10 +56,28 @@ li{
 .button--error:hover{
     background: #e16347;
 }
+.button--delete{
+    position: absolute;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    border: none;
+    border-radius: 50%;
+    bottom: 0;
+    right: 0;
+    background: url(images/rubbish.svg) no-repeat center;
+    background-size: 20px 20px;
+    opacity: 0.3;
+    transition: 0.2s;
+}
+.button--delete:hover{
+    opacity: 1;
+
+}
 .movie-list {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 .movie-card{
@@ -66,14 +87,25 @@ li{
     background: #fafafa;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.15);
 }
+.movie{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
 
 .movie-img{
+    margin-bottom: 10px;
     width: 100%;
     height: 300px;
     background-size: cover;
     background-position: center;
 }
-
+.movie-card__title{
+    font-size: 20px;
+}
+.movie-card__key{
+    font-size: 16px;
+}
 .actors-create-list {
     margin: 5px 0;
     display: flex;
@@ -90,4 +122,5 @@ li{
 .actor-item{
     display: inline-block;
     margin-right: 10px;
+    font-size: 14px;
 }

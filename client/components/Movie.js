@@ -10,11 +10,11 @@ const Movie = ({ onDeleteMovie, title, id, text, image ,actors, rate }) => {
     };
 
     return (
-        <div>
+        <div className="movie">
             <div style={{ backgroundImage: `url(${image || "http://marcroftmedical.com/wp-content/themes/marcroft/images/default-blog.jpg"})`}} className="movie-img"/>
-            <h2>{title}</h2>
-            <h4>Rate: {rate}</h4>
-            <h4>Actors:</h4>
+            <h2 className="movie-card__title">{title}</h2>
+            <h4  className="movie-card__key">Rate: {rate}</h4>
+            <h4  className="movie-card__key">Actors:</h4>
             { <ul className="actors-list">
                 {actors.map((name, index) =>  {
                     if (index < 2) return (<li key={index} className="actor-item">{name},</li>);
@@ -23,7 +23,7 @@ const Movie = ({ onDeleteMovie, title, id, text, image ,actors, rate }) => {
             </ul>}
             {/*<h3>Description:</h3>*/}
             {/*<p>{text}</p>*/}
-            <button className="button button--error" onClick={deleteMovie}>delete movie</button>
+            <button className="button--delete" onClick={deleteMovie}/>
         </div>
     )
 };
