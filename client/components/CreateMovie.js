@@ -5,11 +5,11 @@ import api from '../api';
 import ActorsList from './ActorsList';
 
 
-const CreateMovie = ({onAddMovie, onClearActorsList, actors}) => {
+const CreateMovie = ({onAddMovie, onClearActorsList, onAddMoviesList, actors}) => {
     let movie = {
         title: "",
         text: "",
-        img: "",
+        image: "",
         rate: "",
         actors
     };
@@ -20,7 +20,7 @@ const CreateMovie = ({onAddMovie, onClearActorsList, actors}) => {
         let data = {
             title: movie.title.value,
             text: movie.text.value,
-            img: movie.img.value,
+            image: movie.image.value,
             rate: +movie.rate.value,
             actors
         };
@@ -30,7 +30,7 @@ const CreateMovie = ({onAddMovie, onClearActorsList, actors}) => {
             .then(() => {
                 movie.title.value = "";
                 movie.text.value = "";
-                movie.img.value = "";
+                movie.image.value = "";
                 movie.rate.value = "";
                 onClearActorsList();
             });
@@ -44,11 +44,10 @@ const CreateMovie = ({onAddMovie, onClearActorsList, actors}) => {
         const file = e.target.files[0];
         console.log('loading file');
         let fileObj={};
-
         const reader = new FileReader();
         reader.onload = (e) => {
             fileObj.file = e.target.result;
-            api.loadFile(fileObj);
+            api.loadFile(fileObj).then(data => {onAddMoviesList(data.data)});
         };
         reader.readAsText(file);
     };
@@ -86,7 +85,7 @@ const CreateMovie = ({onAddMovie, onClearActorsList, actors}) => {
                            placeholder="Img url"
                            className="input"
                            ref={(input) => {
-                               movie.img = input;
+                               movie.image = input;
                            }}/>
                 </div>
                 <div>
@@ -108,6 +107,7 @@ const CreateMovie = ({onAddMovie, onClearActorsList, actors}) => {
             <h2>or download your file</h2>
             <form action="">
                 <input type="file" onChange={handleLoadFile}/>
+
             </form>
         </div>
     )
@@ -127,9 +127,12 @@ function mapDispatchToProps(dispatch) {
         },
         onClearActorsList: () => {
             dispatch({type: "CLEAR_ACTORS_LIST"})
+        },
+        onAddMoviesList: (data) => {
+            dispatch({type: "ADD_MOVIES_LIST", data})
         }
-
     }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateMovie)

@@ -16,9 +16,11 @@ export function createMovie(data) {
     const movie = new Movie({
         title: data.title,
         text: data.text,
-        img: data.img,
-        rate: data.rate,
-        actors: data.actors
+        image: data.image,
+        rate: +data.rate,
+        format: data.format,
+        actors: data.actors,
+        "released-year": data["released-year"]
     });
     return movie.save();
 }
@@ -51,24 +53,27 @@ export function filterMovie(data) {
             filteredMovies = filteredMovies.sort({ rate: 'desc', test: -1 });
             break;
     }
-
     return filteredMovies;
 }
 
 export function loadFile(fileObj) {
 
-    console.log(fileObj.file);
     let movies = fileObj.file.split(/\r\n\n|\n\n/ );
 
-        // Reading line by line
-    movies = movies.map((movie) => {
-            // console.log(movie + '\n=================================');
-            let movieObjItem = movie.split(/\r\n|\n/ );
-        console.log(movieObjItem + '\n-----');
+    movies = movies.map(movie => {
+        let obj = {};
+
+        movie.split(/\r\n|\n/ ).map(item => {
+            let itemArr = item.split(": ");
+            obj[itemArr[0].toLowerCase()] = itemArr[1];
+        });
+        obj.actors = obj.actors.split(',');
+        return obj;
     });
 
-
-
-
+    movies.map(movie => {
+        createMovie(movie);
+    });
+    return movies;
 
 }

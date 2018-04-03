@@ -11,7 +11,7 @@ export default {
         const movie = {
             title: data.title,
             text: data.text,
-            img: data.img,
+            image: data.image,
             rate: data.rate,
             actors: data.actors
         };
@@ -20,6 +20,7 @@ export default {
     deleteMovie(id) {
         return axios.delete(`${apiPrefix}/movie/${id}`)
     },
+
 
     filterMovie (data) {
         return axios.post(`${apiPrefix}/movies/filter`, data)

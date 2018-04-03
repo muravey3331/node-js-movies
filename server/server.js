@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import * as db from './utils/DataBaseUtils';
 import { serverPort } from '../etc/config.json'
 import cors from 'cors';
+import fs from 'file-system';
 
 db.setUpConnection();
 
@@ -27,15 +28,14 @@ app.delete('/movie/:id', (req, res) => {
 app.post('/movies/filter', (req, res) => {
     db.filterMovie(req.body).then(data => res.send(data));
 });
+
 app.post('/movies/load_file', (req, res) => {
-    // console.log(req.body);
-    db.loadFile(req.body);
+    res.send(db.loadFile(req.body));
 });
 
 const server = app.listen(3000, (err) =>{
     if (err) console.log(err);
     console.log(`server is running on port ${serverPort}`);
-
 });
 
 

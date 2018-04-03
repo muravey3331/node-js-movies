@@ -15,7 +15,8 @@ export default function card(state = initialState, action) {
         case 'DELETE_MOVIE':
             return state.filter(movie =>  movie._id !== action.id);
 
-
+        case 'ADD_MOVIES_LIST':
+            return[...state, ...action.data];
         default:
             return state
     }

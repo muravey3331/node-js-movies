@@ -13,7 +13,7 @@ const MoviesList = ({moviesList}) => {
                             <Movie title={movie.title}
                                    id={movie._id}
                                    text={movie.text}
-                                   img={movie.img}
+                                   image={movie.image}
                                    actors={movie.actors}
                                    rate={movie.rate}
                             />

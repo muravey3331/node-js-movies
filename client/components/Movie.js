@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import api from '../api';
 
-const Movie = ({ onDeleteMovie, title, id, text, img ,actors, rate }) => {
+const Movie = ({ onDeleteMovie, title, id, text, image ,actors, rate }) => {
 
     const deleteMovie = () => {
         api.deleteMovie(id)
@@ -11,7 +11,7 @@ const Movie = ({ onDeleteMovie, title, id, text, img ,actors, rate }) => {
 
     return (
         <div>
-            <div style={{ backgroundImage: `url(${img})`}} className="movie-img"/>
+            <div style={{ backgroundImage: `url(${image || "http://marcroftmedical.com/wp-content/themes/marcroft/images/default-blog.jpg"})`}} className="movie-img"/>
             <h2>{title}</h2>
             <h4>Rate: {rate}</h4>
             <h4>Actors:</h4>
@@ -27,6 +27,7 @@ const Movie = ({ onDeleteMovie, title, id, text, img ,actors, rate }) => {
         </div>
     )
 };
+
 
 
 
