@@ -10,7 +10,6 @@
     "cors": "*",
     "events": "^1.1.0",
     "express": "*",
-    "file-system": "^2.2.2",
     "jquery": "*",
     "less": "^2.6.0",
     "mongoose": "*",
