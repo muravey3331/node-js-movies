@@ -13,6 +13,8 @@ export default {
             text: data.text,
             image: data.image,
             rate: data.rate,
+            format: data.format,
+            year: data.year,
             actors: data.actors
         };
         return axios.post(`${apiPrefix}/movies`, movie)
@@ -20,7 +22,6 @@ export default {
     deleteMovie(id) {
         return axios.delete(`${apiPrefix}/movie/${id}`)
     },
-
 
     filterMovie (data) {
         return axios.post(`${apiPrefix}/movies/filter`, data)

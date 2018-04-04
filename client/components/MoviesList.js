@@ -16,6 +16,8 @@ const MoviesList = ({moviesList}) => {
                                    image={movie.image}
                                    actors={movie.actors}
                                    rate={movie.rate}
+                                   format={movie.format}
+                                   year={movie.year}
                             />
                         </li>
                     );

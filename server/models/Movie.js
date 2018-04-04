@@ -9,6 +9,7 @@ const MovieSchema = new Schema({
     rate:            {type: Number},
     format:          {type: String},
     actors:          {type: Array},
+    year:            {type: Number},
     "released-year": {type: Number}
 
 });

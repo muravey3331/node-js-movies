@@ -11,11 +11,15 @@ const Actor = ({ onDeleteActor, name, id}) => {
 
     return (
         <div>
-            {name}
-            <button onClick={handleDeleteActor}>X</button>
+            <div className="actor-create-name">{name}</div>
+            <button
+                className="button-delete-actor"
+                onClick={handleDeleteActor}/>
         </div>
     )
 };
+
+
 
 function mapStateToProps(state) {
     return {

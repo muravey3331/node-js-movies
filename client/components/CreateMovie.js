@@ -5,53 +5,62 @@ import api from '../api';
 import ActorsList from './ActorsList';
 
 
-const CreateMovie = ({onAddMovie, onClearActorsList, onAddMoviesList, actors}) => {
+const CreateMovie = ({  onAddMovie, onClearActorsList, onAddMoviesList, actors}) => {
     let movie = {
-        title: "",
-        text: "",
-        image: "",
-        rate: "",
+        title:  null,
+        text:   null,
+        image:  null,
+        rate:   null,
+        format: null,
+        year:   null,
         actors
+
     };
 
-    const addMovie = (e) => {
-        e.preventDefault();
+    const handleChangeFormat = (e) => {
+        movie.format = e.target;
+    };
 
+
+    const handleAddMovie = (e) => {
+        e.preventDefault();
         let data = {
-            title: movie.title.value,
-            text: movie.text.value,
-            image: movie.image.value,
-            rate: +movie.rate.value,
-            actors
+            title:  movie.title.value,
+            text:   movie.text.value,
+            image:  movie.image.value,
+            rate:   +movie.rate.value,
+            format: movie.format.value,
+            year:   +movie.year.value,
+            actors: movie.actors
         };
 
         api.addMovie(data)
             .then(data => onAddMovie(data.data))
             .then(() => {
-                movie.title.value = "";
-                movie.text.value = "";
-                movie.image.value = "";
-                movie.rate.value = "";
+                movie.title.value   = null;
+                movie.text.value    = null;
+                movie.image.value   = null;
+                movie.rate.value    = null;
+                movie.format.value  = "VHS";
+                movie.year.value    = null;
                 onClearActorsList();
             });
     };
 
-
     const handleLoadFile = (e) => {
-        if ( ! (window.File && window.FileReader && window.FileList && window.Blob)) {
+        if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
             alert('The File APIs are not fully supported in this browser.');
         }
         const file = e.target.files[0];
         console.log('loading file');
-        let fileObj={};
+        let fileObj = {};
         const reader = new FileReader();
         reader.onload = (e) => {
             fileObj.file = e.target.result;
-            api.loadFile(fileObj).then(data => {onAddMoviesList(data.data)});
+            api.loadFile(fileObj).then(data => console.log(data));
         };
         reader.readAsText(file);
     };
-
 
     return (
         <div>
@@ -64,55 +73,60 @@ const CreateMovie = ({onAddMovie, onClearActorsList, onAddMoviesList, actors}) =
                         type="text"
                         placeholder="Movie title"
                         className="input"
-                        ref={(input) => {
-                            movie.title = input;
-                        }}/>
+                        ref={e => {movie.title = e}}/>
                 </div>
                 <div>
                     <textarea name="text"
-                              id=""
-                              cols="30"
-                              rows="10"
                               placeholder="Movie description"
                               className="input-area"
-                              ref={(input) => {
-                                  movie.text = input;
-                              }}/>
+                              ref={e => {movie.text = e}} />
                 </div>
                 <div>
                     <input name="img"
                            type="text"
                            placeholder="Img url"
                            className="input"
-                           ref={(input) => {
-                               movie.image = input;
-                           }}/>
+                           ref={e => {movie.image = e}} />
                 </div>
                 <div>
                     <input name="rate"
                            type="text"
                            placeholder="rate"
                            className="input"
-                           ref={(input) => {
-                               movie.rate = input;
-                           }}/>
+                           ref={e => {movie.rate = e}} />
+                </div>
+                <div>
+                    <input name="year"
+                           type="text"
+                           placeholder="released year"
+                           className="input"
+                           ref={e => {movie.year = e}} />
+                </div>
+                <div>
+                    <select name="format"
+                            onChange={handleChangeFormat}
+                            className="input"
+                            ref={e => {movie.format = e}} >
+                        <option value="VHS">VHS</option>
+                        <option value="DVD">DVD</option>
+                        <option value="HD">HD</option>
+                        <option value="Blu-Ray">Blu-Ray</option>
+                    </select>
                 </div>
                 <ActorsList/>
                 <div>
-                    <button onClick={addMovie}
-                            className="button">add movie
+                    <button onClick={handleAddMovie}
+                            className="button">Add movie
                     </button>
                 </div>
             </form>
             <h2>or download your file</h2>
             <form action="">
                 <input type="file" onChange={handleLoadFile}/>
-
             </form>
         </div>
     )
 };
-
 
 function mapStateToProps(state) {
     return {

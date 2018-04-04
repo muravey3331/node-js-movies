@@ -14,13 +14,13 @@ export function moviesList() {
 
 export function createMovie(data) {
     const movie = new Movie({
-        title: data.title,
-        text: data.text,
-        image: data.image,
-        rate: +data.rate,
+        title:  data.title,
+        text:   data.text,
+        image:  data.image,
+        rate:   +data.rate,
         format: data.format,
         actors: data.actors,
-        "released-year": data["released-year"]
+        year:   +data.year
     });
     return movie.save();
 }
@@ -58,12 +58,12 @@ export function filterMovie(data) {
 
 export function loadFile(fileObj) {
 
-    let movies = fileObj.file.split(/\r\n\n|\n\n/ );
+    let movies = fileObj.file.split(/\r\n\n|\n\n/);
 
     movies = movies.map(movie => {
         let obj = {};
 
-        movie.split(/\r\n|\n/ ).map(item => {
+        movie.split(/\r\n|\n/).map(item => {
             let itemArr = item.split(": ");
             obj[itemArr[0].toLowerCase()] = itemArr[1];
         });
@@ -72,8 +72,10 @@ export function loadFile(fileObj) {
     });
 
     movies.map(movie => {
-        createMovie(movie);
+        createMovie(movie)
     });
-    return movies;
+
+    return Movie.find().exec();
+
 
 }

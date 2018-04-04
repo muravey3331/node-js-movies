@@ -1,8 +1,4 @@
 const initialState = {
-    title: '',
-    text: '',
-    img: '',
-    rate: '',
     actors: []
 };
 

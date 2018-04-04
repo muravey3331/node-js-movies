@@ -26,11 +26,13 @@ class App extends Component {
     }
 }
 
+
 function mapStateToProps(state) {
     return {
 
     }
 }
+
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -39,6 +41,5 @@ function mapDispatchToProps(dispatch) {
         }
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

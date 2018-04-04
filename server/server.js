@@ -30,7 +30,7 @@ app.post('/movies/filter', (req, res) => {
 });
 
 app.post('/movies/load_file', (req, res) => {
-    res.send(db.loadFile(req.body));
+    db.loadFile(req.body).then(data => res.send(data));
 });
 
 const server = app.listen(3000, (err) =>{

@@ -106,6 +106,9 @@ body{
 .movie-card__key{
     font-size: 16px;
 }
+.add-actor-form{
+    display: flex;
+}
 .actors-create-list {
     margin: 5px 0;
     display: flex;
@@ -114,11 +117,36 @@ body{
 }
 .actors-create-item{
     margin: 2px;
-    padding: 5px 10px;
+    padding: 0 5px 0 10px;
+    height: 30px;
     border-radius: 2px;
-    background: #ddd;
+    background: #ffffff;
     font-size: 12px;
+
 }
+.actors-create-item > div{
+    display: flex;
+}
+.actor-create-name{
+    line-height: 30px;
+}
+.button-add-actor{
+    padding: 0 10px;
+}
+.button-delete-actor{
+    margin-left: 10px;
+    border: none;
+    width: 20px;
+    height: 30px;
+    display: inline-block;
+    background: url("images/close.svg") no-repeat center;
+    background-size: 14px 14px;
+    opacity: 0.5;
+}
+.button-delete-actor:hover{
+    opacity: 1;
+}
+
 .actor-item{
     display: inline-block;
     margin-right: 10px;

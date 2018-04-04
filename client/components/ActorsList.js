@@ -15,13 +15,16 @@ const ActorsList = ({ actors, onAddActor}) => {
 
     return (
         <div>
-            <input type="text"
-                   placeholder="Add actor"
-                   className="input"
-                   ref={ input => actorName = input }/>
-            <button
-                onClick={handleAddActor}
-                className="button">add</button>
+            <div className="add-actor-form">
+                <input type="text"
+                       placeholder="Add actor"
+                       className="input"
+                       ref={ input => actorName = input }/>
+                <button
+                    onClick={handleAddActor}
+                    className=" button button-add-actor">Add</button>
+            </div>
+
             <ul className="actors-create-list">
                 {actors.map((name, index) => (
                     <li key={index}
