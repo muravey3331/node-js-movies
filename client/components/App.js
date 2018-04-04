@@ -5,6 +5,7 @@ import api from '../api';
 import MoviesList from "./MoviesList";
 import Filter from "./Filter";
 import CreateMovie from "./CreateMovie";
+import Header from './Header';
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
 
     render(){
         return (<div>
+            <Header />
             <Filter/>
             <CreateMovie />
             <MoviesList />

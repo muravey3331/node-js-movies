@@ -5,7 +5,7 @@ import api from '../api';
 import ActorsList from './ActorsList';
 
 
-const CreateMovie = ({  onAddMovie, onClearActorsList, onAddMoviesList, actors}) => {
+const CreateMovie = ({  onAddMovie, onClearActorsList, onTogglePopup, onAddMoviesList, actors, isOpened}) => {
     let movie = {
         title:  null,
         text:   null,
@@ -15,6 +15,9 @@ const CreateMovie = ({  onAddMovie, onClearActorsList, onAddMoviesList, actors})
         year:   null,
         actors
 
+    };
+    const handleTogglePopup = () => {
+        onTogglePopup()
     };
 
     const handleChangeFormat = (e) => {
@@ -45,6 +48,7 @@ const CreateMovie = ({  onAddMovie, onClearActorsList, onAddMoviesList, actors})
                 movie.year.value    = null;
                 onClearActorsList();
             });
+        handleTogglePopup();
     };
 
     const handleLoadFile = (e) => {
@@ -64,73 +68,82 @@ const CreateMovie = ({  onAddMovie, onClearActorsList, onAddMoviesList, actors})
 
     return (
         <div>
-            <form action=""
-                  className="add-movie-form">
-                <h3>Add your movie</h3>
-                <div>
-                    <input
-                        name="title"
-                        type="text"
-                        placeholder="Movie title"
-                        className="input"
-                        ref={e => {movie.title = e}}/>
-                </div>
-                <div>
+            <button className="button"
+            onClick={handleTogglePopup}>Add Movie</button>
+            <div className={isOpened ? "add-movie-popup open" : "add-movie-popup"}>
+                <div className={isOpened ? "popup-wrapper open" : "popup-wrapper"} >
+                    <button onClick={handleTogglePopup}
+                            className="button-close-popup" />
+                    <form action=""
+                          className="add-movie-form">
+                        <h3>Add your movie</h3>
+                        <div>
+                            <input
+                                name="title"
+                                type="text"
+                                placeholder="Movie title"
+                                className="input"
+                                ref={e => {movie.title = e}}/>
+                        </div>
+                        <div>
                     <textarea name="text"
                               placeholder="Movie description"
                               className="input-area"
                               ref={e => {movie.text = e}} />
+                        </div>
+                        <div>
+                            <input name="img"
+                                   type="text"
+                                   placeholder="Img url"
+                                   className="input"
+                                   ref={e => {movie.image = e}} />
+                        </div>
+                        <div>
+                            <input name="rate"
+                                   type="text"
+                                   placeholder="rate"
+                                   className="input"
+                                   ref={e => {movie.rate = e}} />
+                        </div>
+                        <div>
+                            <input name="year"
+                                   type="text"
+                                   placeholder="released year"
+                                   className="input"
+                                   ref={e => {movie.year = e}} />
+                        </div>
+                        <div>
+                            <select name="format"
+                                    onChange={handleChangeFormat}
+                                    className="input"
+                                    ref={e => {movie.format = e}} >
+                                <option value="VHS">VHS</option>
+                                <option value="DVD">DVD</option>
+                                <option value="HD">HD</option>
+                                <option value="Blu-Ray">Blu-Ray</option>
+                            </select>
+                        </div>
+                        <ActorsList/>
+                        <div>
+                            <button onClick={handleAddMovie}
+                                    className="button">Add movie
+                            </button>
+                        </div>
+                    </form>
+                    <h2>or download your file</h2>
+                    <form action="">
+                        <input type="file" onChange={handleLoadFile}/>
+                    </form>
                 </div>
-                <div>
-                    <input name="img"
-                           type="text"
-                           placeholder="Img url"
-                           className="input"
-                           ref={e => {movie.image = e}} />
-                </div>
-                <div>
-                    <input name="rate"
-                           type="text"
-                           placeholder="rate"
-                           className="input"
-                           ref={e => {movie.rate = e}} />
-                </div>
-                <div>
-                    <input name="year"
-                           type="text"
-                           placeholder="released year"
-                           className="input"
-                           ref={e => {movie.year = e}} />
-                </div>
-                <div>
-                    <select name="format"
-                            onChange={handleChangeFormat}
-                            className="input"
-                            ref={e => {movie.format = e}} >
-                        <option value="VHS">VHS</option>
-                        <option value="DVD">DVD</option>
-                        <option value="HD">HD</option>
-                        <option value="Blu-Ray">Blu-Ray</option>
-                    </select>
-                </div>
-                <ActorsList/>
-                <div>
-                    <button onClick={handleAddMovie}
-                            className="button">Add movie
-                    </button>
-                </div>
-            </form>
-            <h2>or download your file</h2>
-            <form action="">
-                <input type="file" onChange={handleLoadFile}/>
-            </form>
+            </div>
         </div>
     )
 };
 
 function mapStateToProps(state) {
     return {
-        actors: state.createMovie.actors
+        actors: state.createMovie.actors,
+        isOpened: state.createMovie.isOpened
     }
 }
 
@@ -144,6 +157,9 @@ function mapDispatchToProps(dispatch) {
         },
         onAddMoviesList: (data) => {
             dispatch({type: "ADD_MOVIES_LIST", data})
+        },
+        onTogglePopup: () => {
+            dispatch({type: "TOGGLE_CREATE_POPUP"})
         }
     }
 }

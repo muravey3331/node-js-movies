@@ -52,6 +52,12 @@ export function filterMovie(data) {
         case 'rate-down':
             filteredMovies = filteredMovies.sort({ rate: 'desc', test: -1 });
             break;
+        case 'year-up':
+            filteredMovies = filteredMovies.sort({ year: 'asc', test: -1 });
+            break;
+        case 'year-down':
+            filteredMovies = filteredMovies.sort({ year: 'desc', test: -1 });
+            break;
     }
     return filteredMovies;
 }

@@ -53,6 +53,8 @@ const Filter = ({ onGetFilterMovies, onFilterChange, onChangeFilterBy, onChangSo
                 <option value="z>a">Z - A</option>
                 <option value="rate-up">rate up</option>
                 <option value="rate-down">rate down</option>
+                <option value="year-up">year up</option>
+                <option value="year-down">year down</option>
             </select>
         </div>
     )

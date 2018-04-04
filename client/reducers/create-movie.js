@@ -1,5 +1,6 @@
 const initialState = {
-    actors: []
+    actors: [],
+    isOpened: false
 };
 
 export default function createMovie(state = initialState, action) {
@@ -18,6 +19,11 @@ export default function createMovie(state = initialState, action) {
             return {
                 ...state,
                 actors: []
+            };
+        case 'TOGGLE_CREATE_POPUP':
+            return{
+                ...state,
+                isOpened: !state.isOpened
             };
 
         default:
