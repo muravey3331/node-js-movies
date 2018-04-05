@@ -24,7 +24,6 @@ const CreateMovie = ({  onAddMovie, onClearActorsList, onTogglePopup, onAddMovie
         movie.format = e.target;
     };
 
-
     const handleAddMovie = (e) => {
         e.preventDefault();
         let data = {
@@ -76,7 +75,7 @@ const CreateMovie = ({  onAddMovie, onClearActorsList, onTogglePopup, onAddMovie
                             className="button-close-popup" />
                     <form action=""
                           className="add-movie-form">
-                        <h3>Add your movie</h3>
+                        <h3>Add your movie options</h3>
                         <div>
                             <input
                                 name="title"
@@ -130,8 +129,9 @@ const CreateMovie = ({  onAddMovie, onClearActorsList, onTogglePopup, onAddMovie
                             </button>
                         </div>
                     </form>
-                    <h2>or download your file</h2>
+
                     <form action="">
+                        <h4>or add your file with movie(s)</h4>
                         <input type="file" onChange={handleLoadFile}/>
                     </form>
                 </div>
@@ -139,6 +139,7 @@ const CreateMovie = ({  onAddMovie, onClearActorsList, onTogglePopup, onAddMovie
         </div>
     )
 };
+
 
 function mapStateToProps(state) {
     return {
