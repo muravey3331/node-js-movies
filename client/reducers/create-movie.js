@@ -1,4 +1,10 @@
 const initialState = {
+    title:  "",
+    text:   "",
+    image:  "",
+    rate:   null,
+    format: "VHS",
+    year:   null,
     actors: [],
     isOpened: false
 };
@@ -15,15 +21,26 @@ export default function createMovie(state = initialState, action) {
                 ...state,
                 actors: [...state.actors.filter((actorName, index) => index !== action.id)]
             };
-        case 'CLEAR_ACTORS_LIST':
+        case 'CLEAR_CREATE_FORM':
             return {
                 ...state,
-                actors: []
+                title:  "",
+                text:   "",
+                image:  "",
+                rate:   null,
+                format: "VHS",
+                year:   null,
+                actors: [],
             };
         case 'TOGGLE_CREATE_POPUP':
             return{
                 ...state,
                 isOpened: !state.isOpened
+            };
+        case 'CHANGE_CREATE_INPUT':
+            return{
+                ...state,
+                [action.data.key]: action.data.value
             };
 
         default:
