@@ -68,6 +68,7 @@ export function loadFile(fileObj) {
 
     movies = movies.map(movie => {
         let obj = {};
+        if(!movie) return;
 
         movie.split(/\r\n|\n/).map(item => {
             let itemArr = item.split(": ");
@@ -77,11 +78,11 @@ export function loadFile(fileObj) {
         return obj;
     });
 
-    movies.map(movie => {
-        createMovie(movie)
-    });
+    movies.map(
+        createMovie
+    ).then(() => Movie.find());
 
-    return Movie.find().exec();
+
 
 
 }

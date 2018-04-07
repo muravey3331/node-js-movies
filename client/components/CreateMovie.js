@@ -60,7 +60,7 @@ const CreateMovie = ({  onAddMovie, onClearActorsList, onTogglePopup, onAddMovie
         const reader = new FileReader();
         reader.onload = (e) => {
             fileObj.file = e.target.result;
-            api.loadFile(fileObj).then(data => console.log(data));
+            api.loadFile(fileObj).then(data => console.log('data', data));
         };
         reader.readAsText(file);
     };

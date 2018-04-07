@@ -12,11 +12,8 @@ const Header = () => {
                     <img src="./images/video-camera.svg" alt=""/>
                     <p className="logo-text">MOVIES</p>
                 </div>
-
             </div>
-
         </div>
-            
     )
 };
 

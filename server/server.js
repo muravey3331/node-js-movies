@@ -3,7 +3,6 @@ import bodyParser from 'body-parser'
 import * as db from './utils/DataBaseUtils';
 import { serverPort } from '../etc/config.json'
 import cors from 'cors';
-import fs from 'file-system';
 
 db.setUpConnection();
 
