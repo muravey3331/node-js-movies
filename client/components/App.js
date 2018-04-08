@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import api from '../api';
+
 //components
+
 import MoviesList from "./MoviesList";
-import Filter from "./Filter";
-import CreateMovie from "./CreateMovie";
-import Header from './Header';
+// import MovieAbout from "./MovieAbout";
+
+
 
 
 class App extends Component {
@@ -17,14 +19,10 @@ class App extends Component {
         api.getMovies().then(data => this.props.onGetMovies(data.data));
     }
 
-
     render(){
-        return (<div>
-            <Header />
-            <Filter/>
-            <CreateMovie />
+        return (
             <MoviesList />
-        </div>)
+        )
     }
 }
 

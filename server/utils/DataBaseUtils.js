@@ -9,18 +9,19 @@ export function setUpConnection() {
 }
 
 export function moviesList() {
+    console.log('find', Date.now());
     return Movie.find()
 }
 
 export function createMovie(data) {
     const movie = new Movie({
-        title:  data.title,
-        text:   data.text,
-        image:  data.image,
-        rate:   +data.rate,
+        title: data.title,
+        text: data.text,
+        image: data.image,
+        rate: +data.rate,
         format: data.format,
         actors: data.actors,
-        year:   +data.year
+        year: +data.year
     });
     return movie.save();
 }
@@ -41,34 +42,33 @@ export function filterMovie(data) {
     }
     switch (data.sortBy) {
         case 'a>z':
-            filteredMovies = filteredMovies.sort({ title: 'asc', test: -1 });
+            filteredMovies = filteredMovies.sort({title: 'asc', test: -1});
             break;
         case 'z>a':
-            filteredMovies = filteredMovies.sort({ title: 'desc', test: -1 });
+            filteredMovies = filteredMovies.sort({title: 'desc', test: -1});
             break;
         case 'rate-up':
-            filteredMovies = filteredMovies.sort({ rate: 'asc', test: -1 });
+            filteredMovies = filteredMovies.sort({rate: 'asc', test: -1});
             break;
         case 'rate-down':
-            filteredMovies = filteredMovies.sort({ rate: 'desc', test: -1 });
+            filteredMovies = filteredMovies.sort({rate: 'desc', test: -1});
             break;
         case 'year-up':
-            filteredMovies = filteredMovies.sort({ year: 'asc', test: -1 });
+            filteredMovies = filteredMovies.sort({year: 'asc', test: -1});
             break;
         case 'year-down':
-            filteredMovies = filteredMovies.sort({ year: 'desc', test: -1 });
+            filteredMovies = filteredMovies.sort({year: 'desc', test: -1});
             break;
     }
     return filteredMovies;
 }
 
-export function loadFile(fileObj) {
+export function parseFile(fileObj) {
 
     let movies = fileObj.file.split(/\r\n\n|\n\n/);
 
     movies = movies.map(movie => {
         let obj = {};
-        if(!movie) return;
 
         movie.split(/\r\n|\n/).map(item => {
             let itemArr = item.split(": ");
@@ -77,12 +77,12 @@ export function loadFile(fileObj) {
         obj.actors = obj.actors.split(',');
         return obj;
     });
+    movies.map(movie => {
+        createMovie(movie);
+    });
+    return Movie.find().exec();
+}
 
-    movies.map(
-        createMovie
-    ).then(() => Movie.find());
-
-
-
+export function loadMoviesArr(movies) {
 
 }

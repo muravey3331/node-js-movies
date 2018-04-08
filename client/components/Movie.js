@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import api from '../api';
 
-const Movie = ({ onDeleteMovie, title, id, text, image ,actors, rate, format, year }) => {
+
+const Movie = ({ onDeleteMovie, title, id, image, rate,  year }) => {
 
     const deleteMovie = () => {
         api.deleteMovie(id)
@@ -11,7 +12,8 @@ const Movie = ({ onDeleteMovie, title, id, text, image ,actors, rate, format, ye
 
     return (
         <div className="movie">
-            <div style={{ backgroundImage: `url(${image || "http://marcroftmedical.com/wp-content/themes/marcroft/images/default-blog.jpg"})`}} className="movie-img"/>
+            <div style={{ backgroundImage: `url(${ image || "http://marcroftmedical.com/wp-content/themes/marcroft/images/default-blog.jpg" })`}}
+                 className="movie-img"/>
             <h2 className="movie-card__title">{title}</h2>
             <h4  className="movie-card__key">Rate: {rate}</h4>
             {/*<h4  className="movie-card__key">Actors:</h4>*/}
@@ -31,15 +33,11 @@ const Movie = ({ onDeleteMovie, title, id, text, image ,actors, rate, format, ye
 };
 
 
-
-
-
 function mapStateToProps(state) {
     return {
         movie: state
     }
 }
-
 
 function mapDispatchToProps(dispatch) {
     return {
