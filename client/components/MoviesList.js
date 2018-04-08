@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+
 //components
 import Movie from "./Movie";
 import Filter from "./Filter";

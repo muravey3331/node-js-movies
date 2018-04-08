@@ -16,7 +16,10 @@ export default function card(state = initialState, action) {
 
         case 'ADD_MOVIES_LIST':
             console.log(action.data);
-            return action.data;
+            return [
+                ...state,
+                ...action.data
+            ];
         default:
             return state
     }

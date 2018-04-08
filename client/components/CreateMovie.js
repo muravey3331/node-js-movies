@@ -27,7 +27,7 @@ const CreateMovie = ({onClearForm, onTogglePopup, onAddMoviesList, state}) => {
         reader.onload = (e) => {
             fileObj.file = e.target.result;
             api.loadFile(fileObj).then(data => {
-                console.log(data);
+                onAddMoviesList(data.data);
                 handleTogglePopup();
             });
         };

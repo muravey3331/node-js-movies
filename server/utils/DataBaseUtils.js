@@ -9,7 +9,6 @@ export function setUpConnection() {
 }
 
 export function moviesList() {
-    console.log('find', Date.now());
     return Movie.find()
 }
 
@@ -63,13 +62,11 @@ export function filterMovie(data) {
     return filteredMovies;
 }
 
-export function parseFile(fileObj) {
+export function loadFile(fileObj) {
 
     let movies = fileObj.file.split(/\r\n\n|\n\n/);
-
     movies = movies.map(movie => {
         let obj = {};
-
         movie.split(/\r\n|\n/).map(item => {
             let itemArr = item.split(": ");
             obj[itemArr[0].toLowerCase()] = itemArr[1];
@@ -77,12 +74,5 @@ export function parseFile(fileObj) {
         obj.actors = obj.actors.split(',');
         return obj;
     });
-    movies.map(movie => {
-        createMovie(movie);
-    });
-    return Movie.find().exec();
-}
-
-export function loadMoviesArr(movies) {
-
+   return Promise.all(movies.map( createMovie )).then(result => result);
 }

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import api from '../api';
 
+import { Router, Route} from 'react-router-3';
+
+
 //components
 
 import MoviesList from "./MoviesList";
-// import MovieAbout from "./MovieAbout";
-
+import MovieAbout from "./MovieAbout";
 
 
 
@@ -21,7 +23,12 @@ class App extends Component {
 
     render(){
         return (
-            <MoviesList />
+            <Router history={this.props.history}>
+                <div>
+                    <Route path="/" component={MoviesList}/>
+                    <Route path="/movie" component={MovieAbout}/>
+                </div>
+            </Router>
         )
     }
 }

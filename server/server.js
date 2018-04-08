@@ -17,7 +17,7 @@ app.get('/movies', (req, res) => {
 });
 
 app.post('/movies', (req, res) => {
-    db.createMovie(req.body).then(data => res.send(data));
+    db.createMovie(req.body).then(data => {console.log(data);res.send(data)});
 });
 
 app.delete('/movie/:id', (req, res) => {
@@ -29,7 +29,7 @@ app.post('/movies/filter', (req, res) => {
 });
 
 app.post('/movies/load_file', (req, res) => {
-    db.parseFile(req.body).then(data => res.send(data));
+    db.loadFile(req.body).then(data => res.send(data));
 });
 
 const server = app.listen(3000, (err) =>{
