@@ -22,18 +22,28 @@ const CreateMovie = ({onInputChange, handleTogglePopup, onAddMovie, onClearForm,
             year:   +state.year,
             actors: state.actors
         };
-        api.addMovie(data)
-            .then(data => {
-                onAddMovie(data.data);
-                onClearForm();
-                handleTogglePopup();
-            });
+        if( data.title &&
+            data.text &&
+            data.rate &&
+            data.rate <= 10 &&
+            data.year &&
+            data.actors){
+            api.addMovie(data)
+                .then(data => {
+                    onAddMovie(data.data);
+                    onClearForm();
+                    handleTogglePopup();
+                });
+        }else{
+            console.error('fill all fields');
+        }
+
     };
 
     return (
          <form action=""
                className="add-movie-form">
-             <h3>Add your movie options</h3>
+             <h3 className="add-movie-form__title">Add your movie options</h3>
              <div>
                  <input
                      name="title"

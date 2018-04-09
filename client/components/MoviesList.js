@@ -1,11 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-
 //components
 import Movie from "./Movie";
 import Filter from "./Filter";
-import CreateMovie from "./CreateMovie";
+
 import Header from './Header';
 
 const MoviesList = ({moviesList}) => {
@@ -13,7 +12,6 @@ const MoviesList = ({moviesList}) => {
         <div>
             <Header />
             <Filter/>
-            <CreateMovie />
 
             <ul className="movie-list">
                 { moviesList.map((movie, index) => {

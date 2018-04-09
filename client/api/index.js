@@ -22,12 +22,14 @@ export default {
     deleteMovie(id) {
         return axios.delete(`${apiPrefix}/movie/${id}`)
     },
-
     filterMovie (data) {
         return axios.post(`${apiPrefix}/movies/filter`, data)
     },
     loadFile(file){
-        return axios.post( `${apiPrefix}/movies/load_file`, file )
+        return axios.post(`${apiPrefix}/movies/load_file`, file )
+    },
+    getMovie(id){
+        return axios.get(`${apiPrefix}/movies/open_movie/${id}`)
     }
 }
 

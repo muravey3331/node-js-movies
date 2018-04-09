@@ -1,4 +1,3 @@
-
 const initialState = [];
 
 export default function card(state = initialState, action) {
@@ -15,7 +14,6 @@ export default function card(state = initialState, action) {
             return state.filter(movie =>  movie._id !== action.id);
 
         case 'ADD_MOVIES_LIST':
-            console.log(action.data);
             return [
                 ...state,
                 ...action.data
@@ -24,6 +22,3 @@ export default function card(state = initialState, action) {
             return state
     }
 }
-
-
-

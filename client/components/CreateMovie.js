@@ -18,7 +18,6 @@ const CreateMovie = ({onClearForm, onTogglePopup, onAddMoviesList, state}) => {
 
     const handleLoadFile = (e) => {
         e.preventDefault();
-        console.log('loading file');
         if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
             alert('The File APIs are not fully supported in this browser.');
         }
@@ -44,7 +43,7 @@ const CreateMovie = ({onClearForm, onTogglePopup, onAddMoviesList, state}) => {
                             className="button-close-popup" />
                     <CreateMovieForm handleTogglePopup={handleTogglePopup}/>
                     <form action="">
-                        <h4>or add your file with movie(s)</h4>
+                        <h3 className="add-movie-form__title">Or add your file with movie(s)</h3>
                         <input type="file" onChange={handleAddFile}/>
                         <button onClick={handleLoadFile}
                                 className="button">Load file</button>

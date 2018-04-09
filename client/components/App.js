@@ -4,7 +4,6 @@ import api from '../api';
 
 import { Router, Route} from 'react-router-3';
 
-
 //components
 
 import MoviesList from "./MoviesList";
@@ -26,12 +25,13 @@ class App extends Component {
             <Router history={this.props.history}>
                 <div>
                     <Route path="/" component={MoviesList}/>
-                    <Route path="/movie" component={MovieAbout}/>
+                    <Route path="/movie/:id" component={MovieAbout}/>
                 </div>
             </Router>
         )
     }
 }
+
 
 
 function mapStateToProps(state) {

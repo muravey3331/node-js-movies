@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import api from '../api';
 import { Link } from 'react-router-3';
 
-const Movie = ({ onDeleteMovie, title, id, image, rate,  year }) => {
+const Movie = ({ onDeleteMovie, title, id, image, rate,  year, format }) => {
 
     const deleteMovie = () => {
         api.deleteMovie(id)
@@ -12,24 +12,18 @@ const Movie = ({ onDeleteMovie, title, id, image, rate,  year }) => {
 
     return (
         <div className="movie">
-            <Link to='/movie' >
+            <Link to={ `/movie/${id}` } >
                 <div style={{ backgroundImage: `url(${ image || "http://marcroftmedical.com/wp-content/themes/marcroft/images/default-blog.jpg" })`}}
-                              className="movie-img"/>
+                     className="movie-card-img"/>
             </Link>
-
             <h2 className="movie-card__title">{title}</h2>
-            <h4  className="movie-card__key">Rate: {rate}</h4>
-            {/*<h4  className="movie-card__key">Actors:</h4>*/}
-            {/*{ <ul className="actors-list">*/}
-                {/*{actors.map((name, index) =>  {*/}
-                    {/*if (index < 2) return (<li key={index} className="actor-item">{name},</li>);*/}
-                    {/*if (index === 2 ) return (<li key={index} className="actor-item">{name} ...</li>)}*/}
-                        {/*)}*/}
-            {/*</ul>}*/}
-            {/*<p>{format}</p>*/}
-            <p>{year}</p>
-            {/*<h3>Description:</h3>*/}
-            {/*<p>{text}</p>*/}
+            <div>
+                <p className="movie-card__key">Rate: </p>
+                <p className="movie-card__value"> {rate}/10</p>
+            </div>
+            <div>
+                <p className="movie-card__value">{year}</p>
+            </div>
             <button className="button--delete" onClick={deleteMovie}/>
         </div>
     )
@@ -47,6 +41,7 @@ function mapDispatchToProps(dispatch) {
         onDeleteMovie: (id) => {
             dispatch({type: "DELETE_MOVIE", id})
         }
+
     }
 }
 

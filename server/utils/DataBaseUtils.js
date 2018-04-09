@@ -76,3 +76,6 @@ export function loadFile(fileObj) {
     });
    return Promise.all(movies.map( createMovie )).then(result => result);
 }
+export function getMovieAbout (id) {
+    return Movie.findById(id);
+}
