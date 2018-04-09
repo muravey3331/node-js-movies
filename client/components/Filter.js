@@ -39,26 +39,23 @@ const Filter = ({ onGetFilterMovies, onFilterChange, onChangeFilterBy, onChangSo
 
     return (
         <div className="filters">
-            <input type="text"
-                   className="input search-input"
-                   placeholder="what do you want to find"
-                   onChange={handleChangeFilterValue}
-                   value={filter.filterValue}/>
-            <div className="flex flex-between">
+
+            <div className="flex flex-between items-center">
+                <input type="text"
+                       className="input search-input"
+                       placeholder="what do you want to find"
+                       onChange={handleChangeFilterValue}
+                       value={filter.filterValue}/>
                 <div >
                     <p className="filter-label">filter by:</p>
-                    <select name=""
-                            id=""
-                            onChange={handleChangeFilterBy}
+                    <select onChange={handleChangeFilterBy}
                             value={filter.filterBy}
                             className="filter-select">
                         <option value="title">movie name</option>
                         <option value="actor">actors</option>
                     </select>
-                    <p className="filter-label">filter by:</p>
-                    <select name=""
-                            id=""
-                            onChange={handleChangeSortBy}
+                    <p className="filter-label">sort by:</p>
+                    <select onChange={handleChangeSortBy}
                             value={filter.sortBy}
                             className="filter-select">
                         <option value="">off</option>

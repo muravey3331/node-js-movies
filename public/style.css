@@ -10,8 +10,9 @@ li{
     list-style: none;
 }
 body{
-    padding-top: 80px;
-    background: #202455;
+    padding-top: 60px;
+    background: #000000;
+    color: #222;
 }
 
 .flex{
@@ -19,6 +20,9 @@ body{
 }
 .flex-between{
     justify-content: space-between;
+}
+.items-center{
+    align-items: center;
 }
 .row{
     margin: 10px 0;
@@ -37,7 +41,7 @@ body{
     right: 0;
     padding: 10px 0;
     height: 60px;
-    background: #16193b;
+    background: #1c1d1d;
 }
 .logo{
     display: block;
@@ -52,6 +56,9 @@ body{
     line-height: 40px;
     color: white;
     font-family: 'Monoton', cursive;
+}
+.banner{
+    width: 100%;
 }
 /*popup*/
 .add-movie-popup {
@@ -98,7 +105,10 @@ body{
     padding-left: 20px;
     height: 40px;
     width: 100%;
-    border: 1px solid royalblue;
+    border: 1px solid #bababa;
+}
+.input:focus{
+    border-color: royalblue;
 }
 .input-area{
     margin: 5px 0;
@@ -106,8 +116,11 @@ body{
     padding: 20px;
     height: 120px;
     width: 100%;
-    border: 1px solid royalblue;
+    border: 1px solid #bababa;
     resize: none;
+}
+.input-area:focus{
+    border-color: royalblue;
 }
 .button{
     margin: 5px 0;
@@ -119,14 +132,7 @@ body{
     border: none;
 }
 .button:hover{
-    background: #415fc3;
-}
-.button--error{
-    padding: 0 10px;
-    background: tomato;
-}
-.button--error:hover{
-    background: #e16347;
+    background: royalblue;
 }
 .button--delete{
     position: absolute;
@@ -144,21 +150,24 @@ body{
 }
 .button--delete:hover{
     opacity: 1;
-
 }
 /*filter*/
 .filters{
     background: #fff;
-    padding: 20px;
+    padding: 10px 20px;
     font-size: 14px;
 }
 .search-input{
-    margin-bottom: 20px;
+    width: 400px;
 }
 .filter-select{
     margin: 0 20px 0 10px;
     height: 30px;
-    width: 140px;
+    width: 120px;
+    border-color: #bababa;
+}
+.filter-select:focus{
+    border-color: royalblue;
 }
 .filter-label{
     display: inline-block;
@@ -177,8 +186,9 @@ body{
 }
 .movie-card{
     margin: 5px;
-    width: 220px;
-    padding: 10px;
+    width: calc(20% - 10px);
+    min-width: 220px;
+    padding: 8px;
     background: #fafafa;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.15);
     transition: 0.1s;
@@ -276,6 +286,7 @@ body{
 }
 /*page about*/
 .page-about{
+    margin-top: 20px;
     padding: 40px;
     box-sizing: border-box;
     background: #fff;
@@ -288,7 +299,7 @@ body{
     border-radius: 3px;
     padding: 0 40px;
     height: 40px;
-    color: #4169e1;
+    color: royalblue;
     background: #fff;
     transition: 0.1s;
 }
@@ -333,13 +344,13 @@ body{
 }
 .description__key{
     width: 150px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 }
 .description__value{
     width: calc(100% - 150px);
     flex-grow: 4;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
 }
 .empty-star{
@@ -352,7 +363,6 @@ body{
 }
 .entire-star{
     position: relative;
-
     height: 24px;
     background: url(images/star-1.svg);
     background-size: 24px 24px;
