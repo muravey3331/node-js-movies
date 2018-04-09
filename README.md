@@ -1,5 +1,5 @@
 # The movies!
-## Single page application on ReactJS/Redux & NodeJS
+## Single page application on ReactJS/Redux & NodeJS/Express
 
 ## How to install
 1. Make sure that you have already installed NodeJS ([https://nodejs.org/](Node.js)) and MongoDB ([https://www.mongodb.com/](MongoDB));
