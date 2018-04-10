@@ -6,13 +6,17 @@
     font-family: Montserrat, sans-serif;
 }
 
-li{
-    list-style: none;
-}
+
 body{
     padding-top: 60px;
     background: #000000;
     color: #222;
+}
+li{
+    list-style: none;
+}
+p{
+    line-height: 1.5;
 }
 
 .flex{

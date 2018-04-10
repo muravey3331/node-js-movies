@@ -18,7 +18,7 @@ const Movie = ({ onDeleteMovie, title, id, image, rate,  year, format }) => {
             </Link>
             <h2 className="movie-card__title">{title}</h2>
             <div>
-                <p className="movie-card__key">Rate: </p>
+                <p className="movie-card__key">Rating: </p>
                 <p className="movie-card__value"> {rate}/10</p>
             </div>
             <div>
