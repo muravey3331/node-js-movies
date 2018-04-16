@@ -165,6 +165,27 @@ p{
 .button--delete:hover{
     opacity: 1;
 }
+
+.input-file {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.input-file + label {
+    color: #eee;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.input-file:focus + label,
+.input-file + label:hover {
+   color: royalblue;
+    text-decoration: underline;
+}
 /*filter*/
 .filters{
     background: rgba(0, 0, 0, 0.4);

@@ -44,7 +44,10 @@ const CreateMovie = ({onClearForm, onTogglePopup, onAddMoviesList, state}) => {
                     <CreateMovieForm handleTogglePopup={handleTogglePopup}/>
                     <form action="">
                         <h3 className="add-movie-form__title">Or add your file with movie(s)</h3>
-                        <input type="file" onChange={handleAddFile}/>
+                        <div>
+                            <input id="file" className="input-file" type="file" onChange={handleAddFile}/>
+                            <label htmlFor="file">Choose a file ...</label>
+                        </div>
                         <button onClick={handleLoadFile}
                                 className="button">Load file</button>
                     </form>
