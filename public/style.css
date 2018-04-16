@@ -8,7 +8,7 @@
 
 
 body{
-    padding-top: 60px;
+    padding: 60px 0 20px;
     background: #333;
     color: #222;
 }
@@ -129,6 +129,7 @@ p{
     border: 1px solid #4a4a4a;
     background: rgba(0, 0, 0, 0.8);
     resize: none;
+    color: #eee
 }
 .input-area:focus{
     border-color: royalblue;
@@ -259,7 +260,7 @@ p{
     padding: 0 5px 0 10px;
     height: 30px;
     border-radius: 2px;
-    background: #ffffff;
+    background: rgba(0, 0, 0, 0.4);
     font-size: 12px;
 
 }
@@ -373,18 +374,20 @@ p{
     flex-grow: 4;
     font-size: 16px;
     font-weight: 400;
+    display: flex;
+    justify-content: flex-start;
 }
 .empty-star{
-    margin: 20px auto;
+    margin-right: 10px;
     position: relative;
-    width: 240px;
-    height: 24px;
+    width: 200px;
+    height: 20px;
     background: url(images/star.svg);
-    background-size: 24px 24px;
+    background-size: 20px 20px;
 }
 .entire-star{
     position: relative;
-    height: 24px;
+    height: 20px;
     background: url(images/star-1.svg);
-    background-size: 24px 24px;
+    background-size: 20px 20px;
 }
