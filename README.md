@@ -11,4 +11,6 @@ Single page application on ReactJS/Redux & NodeJS/Express
 
 P.S. Add movies from movie.txt in root dir to "Movies" application
 
-![dsfaf](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxcBMtRs4ePVWb1m3pTBeALxaO_jIDZMMeTccOW-F7rCN4krU)
+![movies-1](https://user-images.githubusercontent.com/15192036/38811263-c6dfd594-4191-11e8-97ff-bee59b8881eb.jpg)
+![movies-2](https://user-images.githubusercontent.com/15192036/38811265-c7032a1c-4191-11e8-91ad-cdd010744690.jpg)
+![movies-3](https://user-images.githubusercontent.com/15192036/38811266-c726668a-4191-11e8-9551-9999d091a04a.jpg)
