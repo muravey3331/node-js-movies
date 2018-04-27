@@ -5,11 +5,11 @@ import api from '../api';
 import { Router, Route} from 'react-router-3';
 
 //components
-
 import MoviesList from "./MoviesList";
 import MovieAbout from "./MovieAbout";
 
-
+//actions
+import { getMoviesList } from '../actions';
 
 class App extends Component {
     constructor(props){
@@ -31,21 +31,15 @@ class App extends Component {
         )
     }
 }
-
-
-
 function mapStateToProps(state) {
     return {
 
     }
 }
 
-
 function mapDispatchToProps(dispatch) {
     return {
-        onGetMovies: (data) => {
-            dispatch({type: "GET_MOVIES_LIST", data})
-        }
+        onGetMovies: data => dispatch(getMoviesList(data))
     }
 }
 

@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 //components
-import Actor from './Actor'
+import Actor from './Actor';
 
+//actions
+import { addActor } from '../actions';
 
 const ActorsList = ({ actors, onAddActor}) => {
     let actorName;
@@ -45,9 +47,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        onAddActor: (name) => {
-            dispatch({type: "ADD_ACTOR", name})
-        }
+        onAddActor: name => dispatch(addActor(name))
+
     }
 }
 

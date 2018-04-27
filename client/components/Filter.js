@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import api from '../api';
 //components
 import CreateMovie from "./CreateMovie";
-
+//actions
+import { changeFilterValue, changeFilterBy, changeSortBy, getMoviesList } from '../actions'
 
 const Filter = ({ onGetFilterMovies, onFilterChange, onChangeFilterBy, onChangSortBy, filter}) => {
     let filterParams = {
@@ -29,7 +30,6 @@ const Filter = ({ onGetFilterMovies, onFilterChange, onChangeFilterBy, onChangSo
         onChangSortBy(filterParams);
         getFilteredMovies();
     };
-
 
     const getFilteredMovies = () => {
         api.filterMovie(filterParams)
@@ -73,10 +73,6 @@ const Filter = ({ onGetFilterMovies, onFilterChange, onChangeFilterBy, onChangSo
     )
 };
 
-
-
-
-
 const mapStateToProps = (state) => {
     return {
     filter: state.filter
@@ -85,19 +81,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onFilterChange: (value) =>{
-            dispatch({type: 'CHANGE_FILTER_VALUE', value });
-
-        },
-        onChangeFilterBy: (params) => {
-            dispatch({type: 'CHANGE_FILTER_BY', params})
-        },
-        onChangSortBy: (params) => {
-          dispatch({type: 'CHANGE_SORT_BY', params})
-        },
-        onGetFilterMovies: (data) => {
-            dispatch({type: "GET_MOVIES_LIST", data})
-        }}
+        onFilterChange: value => dispatch(changeFilterValue(value)),
+        onChangeFilterBy: params => dispatch(changeFilterBy(params)),
+        onChangSortBy: params => dispatch(changeSortBy(params)),
+        onGetFilterMovies: data => dispatch(getMoviesList(data))
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter)

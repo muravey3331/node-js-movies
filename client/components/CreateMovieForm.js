@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import api from '../api';
 //components
 import ActorsList from './ActorsList';
-
+//actions
+import { changeCreateInput, addMovie, clearForm, toggleCreatePopup} from '../actions'
 
 const CreateMovie = ({onInputChange, handleTogglePopup, onAddMovie, onClearForm, state}) => {
 
@@ -35,9 +36,8 @@ const CreateMovie = ({onInputChange, handleTogglePopup, onAddMovie, onClearForm,
                     handleTogglePopup();
                 });
         }else{
-            console.error('fill all fields');
+            alert('Fill in all the fields');
         }
-
     };
 
     return (
@@ -115,20 +115,15 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         onInputChange: (field, value) => {
-            const data = {
-              key: field,
-              value
-            };
-            dispatch({type: "CHANGE_CREATE_INPUT", data})
+            const data = { key: field, value };
+            dispatch(changeCreateInput(data))
         },
         onAddMovie: data => {
-            dispatch({type: "ADD_MOVIE", data})
+            dispatch(addMovie(data));
+            dispatch(toggleCreatePopup());
         },
-        onClearForm: () => {
-            dispatch({type: "CLEAR_CREATE_FORM"})
-        },
+        onClearForm: () => dispatch(clearForm()),
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateMovie)

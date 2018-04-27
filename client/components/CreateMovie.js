@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import api from '../api';
 //components
 import CreateMovieForm from './CreateMovieForm';
+//actions
+import { addMovie, clearCreateForm, addMoviesList, toggleCreatePopup } from '../actions'
 
 const CreateMovie = ({onClearForm, onTogglePopup, onAddMoviesList, state}) => {
 
@@ -66,18 +68,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onAddMovie: data => {
-            dispatch({type: "ADD_MOVIE", data})
-        },
-        onClearForm: () => {
-            dispatch({type: "CLEAR_CREATE_FORM"})
-        },
-        onAddMoviesList: (data) => {
-            dispatch({type: "ADD_MOVIES_LIST", data})
-        },
-        onTogglePopup: () => {
-            dispatch({type: "TOGGLE_CREATE_POPUP"})
-        }
+        onAddMovie: data => dispatch(addMovie(data)),
+        onClearForm: () => dispatch(clearCreateForm()),
+        onAddMoviesList: data => dispatch(addMoviesList(data)),
+        onTogglePopup: () => dispatch(toggleCreatePopup())
     }
 }
 

@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 import api from '../api';
 import { Link } from 'react-router-3';
 
+//actions
+import { deleteMovie } from '../actions';
+
 const Movie = ({ onDeleteMovie, title, id, image, rate,  year, format }) => {
 
     const deleteMovie = () => {
@@ -36,10 +39,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onDeleteMovie: (id) => {
-            dispatch({type: "DELETE_MOVIE", id})
-        }
-
+        onDeleteMovie: id => dispatch(deleteMovie(id))
     }
 }
 

@@ -18,16 +18,6 @@ const Header = () => {
 };
 
 
-const mapStateToProps = (state) => {
-    return {
-        filter: state.filter
-    }
-};
 
-const mapDispatchToProps = (dispatch) => {
-    return {}
-       
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect()(Header);
 

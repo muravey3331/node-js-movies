@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+//actions
+import { deleteActor } from '../actions'
 
 const Actor = ({ onDeleteActor, name, id}) => {
 
@@ -19,8 +21,6 @@ const Actor = ({ onDeleteActor, name, id}) => {
     )
 };
 
-
-
 function mapStateToProps(state) {
     return {
         actor: state.createMovie.actors
@@ -29,9 +29,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onDeleteActor: (id) => {
-            dispatch({type: "DELETE_ACTOR", id})
-        }
+        onDeleteActor: id => dispatch(deleteActor(id))
+
     }
 }
 

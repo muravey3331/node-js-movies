@@ -2,9 +2,12 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import api from '../api';
 import { Link } from 'react-router-3';
-//components
 
+//components
 import Header from './Header';
+
+//actions
+import { openMovieAbout } from '../actions';
 
 class MovieAbout extends Component {
     constructor(props) {
@@ -78,20 +81,16 @@ class MovieAbout extends Component {
     }
 }
 
-
 function mapStateToProps(state, ownProps) {
     return {
         ownProps,
         movie: state.movieAbout
     }
-
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onOpenMovie: data => {
-            dispatch({type: "OPEN_MOVIE_ABOUT", data})
-        }
+        onOpenMovie: data => dispatch(openMovieAbout(data))
     }
 }
 

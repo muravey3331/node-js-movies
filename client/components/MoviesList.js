@@ -37,16 +37,10 @@ const MoviesList = ({moviesList}) => {
     )
 };
 
-
-
 function mapStateToProps(state) {
     return {
         moviesList: state.movies
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesList)
+export default connect(mapStateToProps)(MoviesList)
