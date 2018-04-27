@@ -12,7 +12,7 @@ const MoviesList = ({moviesList}) => {
         <div>
             <Header />
             <img className="banner"
-                 src="images/At-the-Movies-Website-banner-1920x460px.jpg" alt=""/>
+                 src="images/movies-banner.jpg" alt=""/>
             <Filter/>
             <ul className="movie-list">
                 { moviesList.map((movie, index) => {

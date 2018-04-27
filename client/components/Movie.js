@@ -16,15 +16,13 @@ const Movie = ({ onDeleteMovie, title, id, image, rate,  year, format }) => {
                 <div style={{ backgroundImage: `url(${ image || "http://marcroftmedical.com/wp-content/themes/marcroft/images/default-blog.jpg" })`}}
                      className="movie-card-img"/>
             </Link>
-            <h2 className="movie-card__title">{title}</h2>
-            <div>
-                <p className="movie-card__key">Rating: </p>
-                <p className="movie-card__value"> {rate}/10</p>
+            <div className="movie-snippet">
+                <h2 className="movie-card__title">{title}</h2>
+                <div>
+                    <p className="movie-card__value">{year}</p>
+                </div>
+                <button className="button--delete" onClick={deleteMovie}/>
             </div>
-            <div>
-                <p className="movie-card__value">{year}</p>
-            </div>
-            <button className="button--delete" onClick={deleteMovie}/>
         </div>
     )
 };

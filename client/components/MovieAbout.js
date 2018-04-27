@@ -38,9 +38,6 @@ class MovieAbout extends Component {
                                 <img
                                     src={`${ this.movie.image || "http://marcroftmedical.com/wp-content/themes/marcroft/images/default-blog.jpg" }`}
                                     className="movie__img"/>
-                                <div className="empty-star">
-                                    <div className="entire-star" style={{width: `${this.movie.rate * 10}%`}} />
-                                </div>
                             </div>
                             <div className="page-about__description">
                                 <h2 className="movie__title">{this.movie.title}</h2>
@@ -53,7 +50,12 @@ class MovieAbout extends Component {
                                 </div>
                                 <div className="flex row">
                                     <p className="description__key">Rating:</p>
-                                    <p className="description__value">{this.movie.rate} / 10</p>
+                                    <div className="description__value">
+                                        <div className="empty-star">
+                                            <div className="entire-star" style={{width: `${this.movie.rate * 10}%`}} />
+                                        </div>
+                                        {this.movie.rate} / 10
+                                    </div>
                                 </div>
                                 <div className="flex row">
                                     <p className="description__key">Format:</p>
