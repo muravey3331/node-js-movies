@@ -17,11 +17,14 @@ class MovieAbout extends Component {
         this.onOpenMovie = this.props.onOpenMovie.bind(this);
     }
 
-    componentDidMount() {
-        api.getMovie(this.routeId).then(data => {
-            this.movie = data.data;
-            this.onOpenMovie(data.data)
-        })
+    async componentDidMount() {
+        let response = await api.getMovie(this.routeId);
+        if (response.status === 200) {
+            this.movie = response.data;
+            this.onOpenMovie(response.data)
+        }else{
+            throw new Error (response.status);
+        }
     }
 
     render() {

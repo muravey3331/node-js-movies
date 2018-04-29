@@ -16,8 +16,13 @@ class App extends Component {
         super(props);
     }
 
-    componentDidMount() {
-        api.getMovies().then(data => this.props.onGetMovies(data.data));
+    async componentDidMount() {
+        let response = await api.getMovies();
+        if (response.status === 200) {
+            this.props.onGetMovies(response.data)
+        }else{
+            throw new Error (response.status);
+        }
     }
 
     render(){

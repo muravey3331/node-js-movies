@@ -8,10 +8,14 @@ import { deleteMovie } from '../actions';
 
 const Movie = ({ onDeleteMovie, title, id, image, rate,  year, format }) => {
 
-    const deleteMovie = () => {
-        api.deleteMovie(id)
-            .then(onDeleteMovie(id));
-    };
+    async function deleteMovie () {
+        let response = await api.deleteMovie(id);
+        if (response.status === 200) {
+            onDeleteMovie(id)
+        }else{
+            throw new Error (response.status);
+        }
+    }
 
     return (
         <div className="movie">

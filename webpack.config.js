@@ -1,54 +1,46 @@
-var webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = {
-    entry: "./client/main.js",
+let conf = {
+    entry: ['babel-polyfill', './client/main.js'],
     output: {
-        path: __dirname + '/public/build/',
+        path: path.resolve(__dirname, '/public/build/'),
+        filename: 'bundle.js',
         publicPath: "build/",
-        filename: "bundle.js"
+    },
+    devServer: {
+        overlay: true,
+        contentBase: "./public",
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
-                loader: "babel",
-                exclude: [/node_modules/, /public/]
+                loader: 'babel-loader',
+                exclude: ['/node_modules/']
             },
             {
-                test: /\.css$/,
-                loader: "style-loader!css-loader!autoprefixer-loader",
-                exclude: [/node_modules/, /public/]
-            },
-            {
-                test: /\.less$/,
-                loader: "style-loader!css-loader!autoprefixer-loader!less",
-                exclude: [/node_modules/, /public/]
-            },
-            {
-                test: /\.gif$/,
-                loader: "url-loader?limit=10000&mimetype=image/gif"
-            },
-            {
-                test: /\.jpg$/,
-                loader: "url-loader?limit=10000&mimetype=image/jpg"
-            },
-            {
-                test: /\.png$/,
-                loader: "url-loader?limit=10000&mimetype=image/png"
-            },
-            {
-                test: /\.svg/,
-                loader: "url-loader?limit=26000&mimetype=image/svg+xml"
-            },
-            {
-                test: /\.jsx$/,
-                loader: "react-hot!babel",
-                exclude: [/node_modules/, /public/]
-            },
-            {
-                test: /\.json$/,
-                loader: "json-loader"
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    // fallback: "style-loader",
+                    use: [
+                        {
+                            loader: "css-loader" // translates CSS into CommonJS
+                        }, {
+                            loader: "sass-loader" // compiles Sass to CSS
+                        }
+                    ]
+                })
             }
         ]
-    }
+    },
+    plugins: [
+        new ExtractTextPlugin("css/styles.css"),
+    ]
+};
+
+module.exports = (env, options) => {
+    let production = options.mode === 'production';
+    conf.devtool = production ? false : "eval-sourcemap"; // replace false with "source-map" for source map on production
+    return conf;
 };

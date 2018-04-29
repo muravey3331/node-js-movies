@@ -3,6 +3,26 @@ export const getMoviesList = data => ({
     data
 });
 
+export const addMoviesList = data => ({
+    type: "ADD_MOVIES_LIST",
+    data
+});
+
+export const addMovie = data => ({
+    type: "ADD_MOVIE",
+    data
+});
+
+export const deleteMovie = id => ({
+    type: "DELETE_MOVIE",
+    id
+});
+
+export const changeCreateInput = data => ({
+    type: "CHANGE_CREATE_INPUT",
+    data
+});
+
 export const addActor = name => ({
     type: "ADD_ACTOR",
     name
@@ -13,30 +33,11 @@ export const deleteActor = id => ({
     id
 });
 
-export const addMovie = data => ({
-    type: "ADD_MOVIE",
-    data
-});
-
 export const clearCreateForm = () => ({
     type: "CLEAR_CREATE_FORM"
 });
 
-export const addMoviesList = data => ({
-    type: "ADD_MOVIES_LIST",
-    data
-});
-
 export const toggleCreatePopup = () => ({
-    type: "TOGGLE_CREATE_POPUP"
-});
-
-export const changeCreateInput = data => ({
-    type: "CHANGE_CREATE_INPUT",
-    data
-});
-
-export const clearForm = () => ({
     type: "TOGGLE_CREATE_POPUP"
 });
 
@@ -53,11 +54,6 @@ export const changeFilterBy = params => ({
 export const changeSortBy = params => ({
     type: "CHANGE_SORT_BY",
     params
-});
-
-export const deleteMovie = id => ({
-    type: "DELETE_MOVIE",
-    id
 });
 
 export const openMovieAbout = data => ({

@@ -31,22 +31,24 @@ const Filter = ({ onGetFilterMovies, onFilterChange, onChangeFilterBy, onChangSo
         getFilteredMovies();
     };
 
-    const getFilteredMovies = () => {
-        api.filterMovie(filterParams)
-            .then(data => {
-                return onGetFilterMovies(data.data)})
-    };
+    async function getFilteredMovies  () {
+        const response = await api.filterMovie(filterParams);
+        if (response.status === 200) {
+            onGetFilterMovies(response.data)
+        }else{
+            throw new Error (response.status);
+        }
+    }
 
     return (
         <div className="filters">
-
             <div className="flex flex-between items-center">
                 <input type="text"
                        className="input search-input"
                        placeholder="what do you want to find"
                        onChange={handleChangeFilterValue}
                        value={filter.filterValue}/>
-                <div >
+                <div>
                     <p className="filter-label">filter by:</p>
                     <select onChange={handleChangeFilterBy}
                             value={filter.filterBy}

@@ -25,12 +25,15 @@ const CreateMovie = ({onClearForm, onTogglePopup, onAddMoviesList, state}) => {
         }
         let fileObj = {};
         const reader = new FileReader();
-        reader.onload = (e) => {
+        reader.onload = async function (e) {
             fileObj.file = e.target.result;
-            api.loadFile(fileObj).then(data => {
-                onAddMoviesList(data.data);
+            let response = await api.loadFile(fileObj);
+            if (response.status === 200) {
+                onAddMoviesList(response.data);
                 handleTogglePopup();
-            });
+            }else{
+                throw new Error (response.status);
+            }
         };
         reader.readAsText(file);
     };

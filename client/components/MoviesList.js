@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 //components
 import Movie from "./Movie";
 import Filter from "./Filter";
-
 import Header from './Header';
 
 const MoviesList = ({moviesList}) => {

@@ -62,8 +62,7 @@ export function filterMovie(data) {
     return filteredMovies;
 }
 
-export function loadFile(fileObj) {
-
+export async function loadFile(fileObj) {
     let movies = fileObj.file.split(/\r\n\n|\n\n/);
     movies = movies.map(movie => {
         let obj = {};
@@ -74,7 +73,7 @@ export function loadFile(fileObj) {
         obj.actors = obj.actors.split(',');
         return obj;
     });
-   return Promise.all(movies.map( createMovie )).then(result => result);
+    return await Promise.all(movies.map( createMovie ));
 }
 export function getMovieAbout (id) {
     return Movie.findById(id);
