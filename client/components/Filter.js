@@ -77,7 +77,7 @@ const Filter = ({ onGetFilterMovies, onFilterChange, onChangeFilterBy, onChangSo
 
 const mapStateToProps = (state) => {
     return {
-    filter: state.filter
+    filter: state.filters
     }
 };
 
