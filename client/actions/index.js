@@ -120,3 +120,17 @@ export const openMovie = (id) => {
         }
     }
 };
+
+export const loadMoviesList = (file) => {
+    return async dispatch => {
+
+        let response = await api.loadFile(file);
+        if (response.status === 200) {
+            dispatch(addMoviesList(response.data));
+            dispatch(toggleCreatePopup())
+        }else{
+            throw new Error (response.status);
+        }
+    }
+};
+

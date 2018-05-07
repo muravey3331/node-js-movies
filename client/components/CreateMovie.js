@@ -4,7 +4,7 @@ import api from '../api';
 //components
 import CreateMovieForm from './CreateMovieForm';
 //actions
-import { clearCreateForm, addMoviesList, toggleCreatePopup } from '../actions'
+import { clearCreateForm, loadMoviesList, toggleCreatePopup } from '../actions'
 
 const CreateMovie = ({onClearForm, onTogglePopup, onAddMoviesList, state}) => {
 
@@ -22,18 +22,13 @@ const CreateMovie = ({onClearForm, onTogglePopup, onAddMoviesList, state}) => {
         e.preventDefault();
         if (!(window.File && window.FileReader && window.FileList && window.Blob)) {
             alert('The File APIs are not fully supported in this browser.');
+            return;
         }
         let fileObj = {};
         const reader = new FileReader();
         reader.onload = async function (e) {
             fileObj.file = e.target.result;
-            let response = await api.loadFile(fileObj);
-            if (response.status === 200) {
-                onAddMoviesList(response.data);
-                handleTogglePopup();
-            }else{
-                throw new Error (response.status);
-            }
+            await onAddMoviesList(fileObj);
         };
         reader.readAsText(file);
     };
@@ -72,7 +67,7 @@ function mapDispatchToProps(dispatch) {
     return {
         // onAddMovie: data => dispatch(addMovie(data)),
         onClearForm: () => dispatch(clearCreateForm()),
-        onAddMoviesList: data => dispatch(addMoviesList(data)),
+        onAddMoviesList: file => dispatch(loadMoviesList(file)),
         onTogglePopup: () => dispatch(toggleCreatePopup())
     }
 }
