@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 //components
 import ActorsList from './ActorsList';
 //actions
-import {changeCreateInput, addNewMovie} from '../actions'
+import {changeCreateInput,} from '../actions/createForm'
+import {addNewMovie} from '../actions/movie'
 
 const CreateMovie = ({onInputChange, onAddMovie, state}) => {
 

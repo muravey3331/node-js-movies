@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 //actions
-import { deleteActor } from '../actions'
+import { deleteActor } from '../actions/createForm'
 
 const Actor = ({ onDeleteActor, name, id}) => {
 

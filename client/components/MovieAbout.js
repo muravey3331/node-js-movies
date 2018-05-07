@@ -6,7 +6,7 @@ import {Link} from 'react-router-3';
 import Header from './Header';
 
 //actions
-import {openMovie} from '../actions';
+import {openMovie} from '../actions/movie';
 
 class MovieAbout extends Component {
     constructor(props) {

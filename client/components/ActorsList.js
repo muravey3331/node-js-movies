@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Actor from './Actor';
 
 //actions
-import { addActor } from '../actions';
+import { addActor } from '../actions/createForm';
 
 const ActorsList = ({ actors, onAddActor}) => {
     let actorName;

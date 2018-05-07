@@ -1,3 +1,7 @@
+import { ADD_MOVIE, DELETE_MOVIE } from '../actions/movie';
+import {GET_MOVIES_LIST } from '../actions/moviesList';
+import {ADD_MOVIES_LIST } from '../actions/createForm';
+
 const initialState = [];
 
 export default function card(state = initialState, action) {

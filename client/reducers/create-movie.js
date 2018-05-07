@@ -1,3 +1,11 @@
+import {
+    ADD_ACTOR,
+    DELETE_ACTOR,
+    CLEAR_CREATE_FORM,
+    TOGGLE_CREATE_POPUP,
+    CHANGE_CREATE_INPUT
+} from '../actions/createForm';
+
 const initialState = {
     title:  "",
     text:   "",
@@ -11,17 +19,17 @@ const initialState = {
 
 export default function createMovie(state = initialState, action) {
     switch (action.type) {
-        case 'ADD_ACTOR':
+        case ADD_ACTOR:
             return {
                 ...state,
                 actors: [...state.actors, action.name]
             };
-        case 'DELETE_ACTOR':
+        case DELETE_ACTOR:
             return {
                 ...state,
                 actors: [...state.actors.filter((actorName, index) => index !== action.id)]
             };
-        case 'CLEAR_CREATE_FORM':
+        case CLEAR_CREATE_FORM:
             return {
                 ...state,
                 title:  "",
@@ -32,12 +40,12 @@ export default function createMovie(state = initialState, action) {
                 year:   null,
                 actors: [],
             };
-        case 'TOGGLE_CREATE_POPUP':
+        case TOGGLE_CREATE_POPUP:
             return{
                 ...state,
                 isOpened: !state.isOpened
             };
-        case 'CHANGE_CREATE_INPUT':
+        case CHANGE_CREATE_INPUT:
             return{
                 ...state,
                 [action.data.key]: action.data.value

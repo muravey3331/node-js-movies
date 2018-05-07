@@ -9,7 +9,7 @@ import MoviesList from "./MoviesList";
 import MovieAbout from "./MovieAbout";
 
 //actions
-import { getMovies } from '../actions';
+import { getMovies } from '../actions/moviesList';
 
 class App extends Component {
     constructor(props){

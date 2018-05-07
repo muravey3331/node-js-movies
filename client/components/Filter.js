@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 //components
 import CreateMovie from "./CreateMovie";
 //actions
-import { changeFilterValue, changeFilterBy, changeSortBy, getFilteredMovies } from '../actions'
+import { changeFilterValue, changeFilterBy, changeSortBy, getFilteredMovies } from '../actions/filters'
 
 const Filter = ({ onGetFilterMovies, onFilterChange, onChangeFilterBy, onChangSortBy, filter}) => {
     let filterParams = {

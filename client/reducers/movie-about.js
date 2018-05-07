@@ -1,3 +1,4 @@
+import { OPEN_MOVIE_ABOUT } from '../actions/movie';
 
 const initialState = {
     title:  "",
@@ -12,7 +13,7 @@ const initialState = {
 
 export default function movieAbout(state = initialState, action) {
     switch (action.type) {
-        case 'OPEN_MOVIE_ABOUT':
+        case OPEN_MOVIE_ABOUT:
             return{
                 ...state,
                 ...action.data

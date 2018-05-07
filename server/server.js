@@ -36,6 +36,7 @@ app.post('/movies/load_file', async (req, res) => {
     let data = await db.loadFile(req.body);
     res.send(data);
 });
+
 app.get('/movies/open_movie/:id', async (req, res) => {
     let data = await db.getMovieAbout(req.params.id);
     res.send(data);

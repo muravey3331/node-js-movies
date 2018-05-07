@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-3';
 
 //actions
-import { deleteMovie } from '../actions';
+import { deleteMovie } from '../actions/movie';
 
 const Movie = ({ onDeleteMovie, title, id, image,  year }) => {
 

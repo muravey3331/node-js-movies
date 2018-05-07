@@ -4,7 +4,7 @@ import api from '../api';
 //components
 import CreateMovieForm from './CreateMovieForm';
 //actions
-import { clearCreateForm, loadMoviesList, toggleCreatePopup } from '../actions'
+import { clearCreateForm, loadMoviesList, toggleCreatePopup } from '../actions/createForm'
 
 const CreateMovie = ({onClearForm, onTogglePopup, onAddMoviesList, state}) => {
 
