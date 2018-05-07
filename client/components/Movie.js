@@ -1,20 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import api from '../api';
 import { Link } from 'react-router-3';
 
 //actions
 import { deleteMovie } from '../actions';
 
-const Movie = ({ onDeleteMovie, title, id, image, rate,  year, format }) => {
+const Movie = ({ onDeleteMovie, title, id, image,  year }) => {
 
-    async function deleteMovie () {
-        let response = await api.deleteMovie(id);
-        if (response.status === 200) {
-            onDeleteMovie(id)
-        }else{
-            throw new Error (response.status);
-        }
+    function handleDeleteMovie () {
+        onDeleteMovie(id);
     }
 
     return (
@@ -28,7 +22,7 @@ const Movie = ({ onDeleteMovie, title, id, image, rate,  year, format }) => {
                 <div>
                     <p className="movie-card__value">{year}</p>
                 </div>
-                <button className="button--delete" onClick={deleteMovie}/>
+                <button className="button--delete" onClick={handleDeleteMovie}/>
             </div>
         </div>
     )

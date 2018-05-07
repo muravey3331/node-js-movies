@@ -4,7 +4,7 @@ import api from '../api';
 //components
 import CreateMovieForm from './CreateMovieForm';
 //actions
-import { addMovie, clearCreateForm, addMoviesList, toggleCreatePopup } from '../actions'
+import { clearCreateForm, addMoviesList, toggleCreatePopup } from '../actions'
 
 const CreateMovie = ({onClearForm, onTogglePopup, onAddMoviesList, state}) => {
 
@@ -62,7 +62,6 @@ const CreateMovie = ({onClearForm, onTogglePopup, onAddMoviesList, state}) => {
     )
 };
 
-
 function mapStateToProps(state) {
     return {
         state: state.createMovie
@@ -71,12 +70,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onAddMovie: data => dispatch(addMovie(data)),
+        // onAddMovie: data => dispatch(addMovie(data)),
         onClearForm: () => dispatch(clearCreateForm()),
         onAddMoviesList: data => dispatch(addMoviesList(data)),
         onTogglePopup: () => dispatch(toggleCreatePopup())
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateMovie)

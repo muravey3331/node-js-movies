@@ -4,7 +4,7 @@ const initialState = {
     sortBy: ""
 };
 
-export default function filter(state = initialState, action) {
+export default function filters(state = initialState, action) {
     switch (action.type) {
         case 'CHANGE_FILTER_VALUE':
             return {

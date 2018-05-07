@@ -30,7 +30,7 @@
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
     "webpack": "^4.5.0",
-    "webpack-cli": "^2.0.14",
+    "webpack-cli": "^2.1.2",
     "webpack-dev-server": "^3.1.3"
   },
   "dependencies": {
@@ -40,7 +40,7 @@
     "cors": "*",
     "express": "*",
     "file-system": "^2.2.2",
-    "mongoose": "*",
+    "mongoose": "^5.0.17",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",

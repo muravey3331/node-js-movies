@@ -1,3 +1,6 @@
+import {apiPrefix} from '../../etc/config.json';
+import api from '../api';
+
 export const getMoviesList = data => ({
     type: "GET_MOVIES_LIST",
     data
@@ -13,7 +16,7 @@ export const addMovie = data => ({
     data
 });
 
-export const deleteMovie = id => ({
+export const removeMovie = id => ({
     type: "DELETE_MOVIE",
     id
 });
@@ -60,3 +63,60 @@ export const openMovieAbout = data => ({
     type: "OPEN_MOVIE_ABOUT",
     data
 });
+
+export const getMovies = () => {
+    return async dispatch => {
+        let response = await api.getMovies();
+        if (response.status === 200) {
+            dispatch(getMoviesList(response.data))
+        }else{
+            throw new Error (response.status);
+        }
+    }
+};
+
+export const addNewMovie = (movie) => {
+    return async dispatch => {
+        let response = await api.addMovie(movie);
+        if (response.status === 200) {
+            dispatch(addMovie(response.data));
+            dispatch(toggleCreatePopup());
+            dispatch(clearCreateForm());
+        }else{
+            throw new Error (response.status);
+        }
+    }
+};
+
+export const deleteMovie = (id) => {
+    return async dispatch => {
+        let response = await api.deleteMovie(id);
+        if (response.status === 200) {
+            dispatch(removeMovie(id))
+        }else{
+            throw new Error (response.status);
+        }
+    }
+};
+
+export const getFilteredMovies = (filters) => {
+    return async dispatch => {
+        let response = await api.filterMovie(filters);
+        if (response.status === 200) {
+            dispatch(getMoviesList(response.data))
+        }else{
+            throw new Error (response.status);
+        }
+    }
+};
+
+export const openMovie = (id) => {
+    return async dispatch => {
+        let response = await api.getMovie(id);
+        if (response.status === 200) {
+            dispatch(openMovieAbout(response.data));
+        }else{
+            throw new Error (response.status);
+        }
+    }
+};
