@@ -6,7 +6,6 @@ import createMovie from './create-movie'
 import filter from './filter';
 import movieAbout from './movie-about'
 
-// import api from '../api';
 
 export default combineReducers(
     {
