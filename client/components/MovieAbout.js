@@ -1,30 +1,27 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import api from '../api';
 import { Link } from 'react-router-3';
 
 //components
 import Header from './Header';
 
 //actions
-import { openMovieAbout } from '../actions';
+import { openMovie } from '../actions';
 
 class MovieAbout extends Component {
     constructor(props) {
         super(props);
+
+        this.onOpenMovie = this.props.onOpenMovie.bind(this);
         this.routeId = this.props.params.id;
         this.movie = this.props.movie;
-        this.onOpenMovie = this.props.onOpenMovie.bind(this);
     }
 
     async componentDidMount() {
-        let response = await api.getMovie(this.routeId);
-        if (response.status === 200) {
-            this.movie = response.data;
-            this.onOpenMovie(response.data)
-        }else{
-            throw new Error (response.status);
-        }
+        let res = await this.onOpenMovie(this.routeId);
+
+        console.log(this.props.movie);
+        console.log(this.movie);
     }
 
     render() {
@@ -93,7 +90,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onOpenMovie: data => dispatch(openMovieAbout(data))
+        onOpenMovie: id => dispatch(openMovie(id))
     }
 }
 

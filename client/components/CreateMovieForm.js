@@ -1,18 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import api from '../api';
 //components
 import ActorsList from './ActorsList';
 //actions
-import {changeCreateInput, addMovie, clearCreateForm} from '../actions'
+import {changeCreateInput, addNewMovie} from '../actions'
 
-const CreateMovie = ({onInputChange, handleTogglePopup, onAddMovie, onClearForm, state}) => {
+const CreateMovie = ({onInputChange, onAddMovie, state}) => {
 
     const handleInputChange = (e) => {
         onInputChange(e.target.name, e.target.value)
     };
 
-    async function handleAddMovie(e) {
+    function handleAddMovie(e) {
         e.preventDefault();
         let data = {
             title: state.title,
@@ -30,14 +29,7 @@ const CreateMovie = ({onInputChange, handleTogglePopup, onAddMovie, onClearForm,
             data.year &&
             data.actors) {
 
-            let response = await api.addMovie(data);
-            if (response.status === 200) {
-                onAddMovie(response.data);
-                onClearForm();
-                handleTogglePopup();
-            }else{
-                throw new Error (response.status);
-            }
+            onAddMovie(data);
         } else {
             alert('Fill in all the fields');
         }
@@ -122,10 +114,9 @@ function mapDispatchToProps(dispatch) {
             dispatch(changeCreateInput(data))
         },
         onAddMovie: data => {
-            dispatch(addMovie(data));
+            dispatch(addNewMovie(data));
 
-        },
-        onClearForm: () => dispatch(clearCreateForm()),
+        }
     }
 }
 

@@ -6,7 +6,6 @@ export default {
     getMovies() {
        return axios.get(`${apiPrefix}/movies`)
     },
-
     addMovie(data) {
         const movie = {
             title: data.title,
