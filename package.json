@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "babel-node server/server.js --presets es2015,stage-0",
+    "server": "babel-node server/server.js --presets env,stage-0",
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development --open",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,7 +30,7 @@
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
     "webpack": "^4.8.0",
-    "webpack-cli": "^2.1.2",
+    "webpack-cli": "^2.1.3",
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
@@ -40,7 +40,7 @@
     "cors": "*",
     "express": "*",
     "file-system": "^2.2.2",
-    "mongoose": "^5.0.17",
+    "mongoose": "^5.0.18",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
